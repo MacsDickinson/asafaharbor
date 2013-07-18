@@ -1,7 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asafaharbor", "Asafaharbor\Asafaharbor.csproj", "{0E6C8A84-D03E-46B8-A6AF-C692B993DDC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asafaharbor.Web", "Asafaharbor\Asafaharbor.Web.csproj", "{0E6C8A84-D03E-46B8-A6AF-C692B993DDC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7556F6D0-074A-48FF-B403-E7628D174D59}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

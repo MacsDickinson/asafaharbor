@@ -42,5 +42,12 @@ namespace Asafaharbor.Web
                 }
                 );
         }
+
+        protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
+        {
+            base.ConfigureConventions(nancyConventions);
+            nancyConventions.StaticContentsConventions.Add(Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("Scripts", "Scripts"));
+            nancyConventions.StaticContentsConventions.Add(Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("Styles", "Styles"));
+        }
     }
 }

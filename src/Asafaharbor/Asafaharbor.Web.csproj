@@ -84,6 +84,29 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\foundation.min.js" />
+    <Content Include="Scripts\foundation\foundation.abide.js" />
+    <Content Include="Scripts\foundation\foundation.alerts.js" />
+    <Content Include="Scripts\foundation\foundation.clearing.js" />
+    <Content Include="Scripts\foundation\foundation.cookie.js" />
+    <Content Include="Scripts\foundation\foundation.dropdown.js" />
+    <Content Include="Scripts\foundation\foundation.forms.js" />
+    <Content Include="Scripts\foundation\foundation.interchange.js" />
+    <Content Include="Scripts\foundation\foundation.joyride.js" />
+    <Content Include="Scripts\foundation\foundation.js" />
+    <Content Include="Scripts\foundation\foundation.magellan.js" />
+    <Content Include="Scripts\foundation\foundation.orbit.js" />
+    <Content Include="Scripts\foundation\foundation.placeholder.js" />
+    <Content Include="Scripts\foundation\foundation.reveal.js" />
+    <Content Include="Scripts\foundation\foundation.section.js" />
+    <Content Include="Scripts\foundation\foundation.tooltips.js" />
+    <Content Include="Scripts\foundation\foundation.topbar.js" />
+    <Content Include="Scripts\vendor\custom.modernizr.js" />
+    <Content Include="Scripts\vendor\jquery.js" />
+    <Content Include="Scripts\vendor\zepto.js" />
+    <Content Include="Styles\foundation.css" />
+    <Content Include="Styles\foundation.min.css" />
+    <Content Include="Styles\normalize.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +124,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
     <None Include="Web.AppHarbor.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

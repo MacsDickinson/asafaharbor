@@ -10,14 +10,53 @@
     <script src="@Url.Content("~/Scripts/vendor/zepto.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/vendor/custom.modernizr.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/foundation.min.js")" type="text/javascript"></script> 
+    
+    <link href="@Url.Content("~/styles/site.css")" rel="stylesheet"/>
     <link href="@Url.Content("~/styles/normalize.css")" rel="stylesheet"/>
     <link href="@Url.Content("~/styles/foundation.css")" rel="stylesheet"/>
 
-    @RenderSection("HeadArea", required: false)
+    @RenderSection("Scripts", required: false)
 </head>
-<body>
-    <div id="main" class="clearfix">
-        @RenderBody()
-    </div>
-</body>
+    <body>
+        <header>
+            <nav class="top-bar">
+                <ul class="title-area">
+                    <li class="name"></li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                </ul>
+                <section class="top-bar-section">
+                    <!-- Left Nav Section -->
+                    <ul class="left">
+                        <li><a href="@Url.Content("~/")">Home</a></li>
+                        <li><a href="@Url.Content("~/About")">About</a></li>
+                        @if (Model.Page.IsAuthenticated)
+                        {
+                            <li><a href="@Url.Content("~/Projects")">Projects</a></li>
+                        }
+                    </ul>
+                    <ul class="right">
+                        @if (Model.Page.IsAuthenticated)
+                        {
+                            <li><a href="@Url.Content("~/Account")">Account</a></li>
+                            <li><a href="@Url.Content("~/Account/log-out")">Log out</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Content("~/Account/log-in")">Log in</a></li>
+                        }
+                    </ul>
+                </section>
+            </nav>
+        </header>
+        <section class="row">
+            <div class="large-12 columns">
+                <h2><a href="@Url.Content("~/")" title="ASafaHarbor">ASafaHarbor</a></h2>
+                <p>Automated Security Analyser for AppHarbor</p>
+                <hr />
+            </div>
+        </section>
+        <div id="main" class="row">
+            @RenderBody()
+        </div>
+    </body>
 </html>

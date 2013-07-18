@@ -1,4 +1,6 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+﻿@using System.Collections.Generic
+@using Asafaharbor.Web.HTMLExtensions
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +11,11 @@
 
     <script src="@Url.Content("~/Scripts/vendor/zepto.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/vendor/custom.modernizr.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/foundation.min.js")" type="text/javascript"></script> 
+    <script src="@Url.Content("~/Scripts/foundation.min.js")" type="text/javascript"></script>
+    
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
     
     <link href="@Url.Content("~/styles/site.css")" rel="stylesheet"/>
     <link href="@Url.Content("~/styles/normalize.css")" rel="stylesheet"/>
@@ -55,6 +61,9 @@
                 <p>Automated Security Analyser for AppHarbor</p>
                 <hr />
             </div>
+        </section>
+        <section class="error">
+            @Html.ValidationSummary((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors)
         </section>
         <div id="main" class="row">
             @RenderBody()

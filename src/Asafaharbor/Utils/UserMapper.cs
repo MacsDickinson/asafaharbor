@@ -27,9 +27,9 @@ namespace Asafaharbor.Web.Utils
             return userRecord == null ? null : new UserIdentity { UserName = userRecord.Username, FriendlyName = userRecord.FriendlyName };
         }
 
-        public Guid? ValidateUser(string username, string password)
+        public Guid? ValidateUser(string email, string password)
         {
-            var userRecord = _documentSession.Query<UserAccount>().FirstOrDefault(x => x.Username == username);
+            var userRecord = _documentSession.Query<UserAccount>().FirstOrDefault(x => x.EMailAddress == email);
             if (userRecord == null) return null;
 
             if (Crypto.VerifyHashedPassword(userRecord.Password, password + userRecord.Salt))

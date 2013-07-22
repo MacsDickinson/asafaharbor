@@ -27,6 +27,43 @@ namespace Asafaharbor.Web.Modules
                 return View["LogIn", Model];
             };
 
+            Post["/log-in"] = parameters =>
+                {
+                    var model = this.Bind<LoginModel>();
+                    var result = this.Validate(model);
+                    if (!result.IsValid)
+                    {
+                        AddPageErrors(result);
+
+                        Page.Title = "Log in";
+                        Model.LoginModel = model;
+                        return View["LogIn", Model];
+                    }
+
+                    var userMapper = new UserMapper(documentSession);
+                    Guid? userId = userMapper.ValidateUser(model.Email, model.Password);
+                    if (!userId.HasValue)
+                    {
+                        Page.Notifications.Add(new NotificationModel
+                            {
+                                Message = "Login failed: Incorrect credentials supplied",
+                                Type = NotificationType.Error
+                            });
+                        Model.LoginModel = model;
+                        return View["LogIn", Model];
+                    }
+                    DateTime? expiry;
+                    if (model.RememberMe)
+                    {
+                        expiry = DateTime.Now.AddDays(7);
+                    }
+                    else
+                    {
+                        expiry = null;
+                    }
+                    return this.LoginAndRedirect(userId.Value, expiry, "~/");
+                };
+
             Get["/register"] = parameters =>
             {
                 Page.Title = "Register";
@@ -44,17 +81,10 @@ namespace Asafaharbor.Web.Modules
                     var result = this.Validate(model);
                     if (!result.IsValid)
                     {
+                        AddPageErrors(result);
+
                         Page.Title = "Register";
-
-                        foreach (var item in result.Errors)
-                        {
-                            foreach (var member in item.MemberNames)
-                            {
-                                Page.Errors.Add(new ErrorModel {Name = member, ErrorMessage = item.GetMessage(member)});
-                            }
-                        }
                         Model.RegisterModel = model;
-
                         return View["Register", Model];
                     }
                     var userMapper = new UserMapper(documentSession);
@@ -80,7 +110,7 @@ namespace Asafaharbor.Web.Modules
                             Message = string.Format("Activation email sent to {0}", model.Email),
                             Type = NotificationType.Success
                         });
-
+                    Model.LoginModel = new LoginModel();
                     return View["LogIn", Model];
                 };
 
@@ -106,8 +136,7 @@ namespace Asafaharbor.Web.Modules
                                 Type = NotificationType.Success
                             });
                             DateTime? expiry = DateTime.Now.AddDays(7);
-                            this.Login(userRecord.UserId, expiry);
-                            return this.LoginAndRedirect(userRecord.UserId, expiry, "~/Home");
+                            return this.LoginAndRedirect(userRecord.UserId, expiry, "~/");
                         }
                     }
                     Model.Page.Notifications.Add(new NotificationModel
@@ -115,8 +144,20 @@ namespace Asafaharbor.Web.Modules
                         Message = "Confirmation link invalid",
                         Type = NotificationType.Error
                     });
+                    Model.LoginModel = new LoginModel();
                     return View["LogIn", Model];
                 };
+        }
+
+        private void AddPageErrors(ModelValidationResult result)
+        {
+            foreach (var item in result.Errors)
+            {
+                foreach (var member in item.MemberNames)
+                {
+                    Page.Errors.Add(new ErrorModel {Name = member, ErrorMessage = item.GetMessage(member)});
+                }
+            }
         }
     }
 }

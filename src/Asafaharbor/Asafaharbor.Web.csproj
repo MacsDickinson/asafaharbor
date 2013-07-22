@@ -132,7 +132,10 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="HTMLExtensions\HtmlExtensions.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\Enums\NotificationType.cs" />
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserIdentity.cs" />
@@ -151,6 +154,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
     <None Include="Web.AppHarbor.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

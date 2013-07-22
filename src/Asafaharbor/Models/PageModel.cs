@@ -9,5 +9,6 @@ namespace Asafaharbor.Web.Models
         public bool IsAuthenticated { get; set; }
         public string CurrentUser { get; set; }
         public List<ErrorModel> Errors { get; set; }
+        public List<NotificationModel> Notifications { get; set; }
     }
 }

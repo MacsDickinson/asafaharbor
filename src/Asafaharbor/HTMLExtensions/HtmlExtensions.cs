@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Asafaharbor.Web.Models;
+using Asafaharbor.Web.Models.Enums;
 using Nancy.ViewEngines.Razor;
 
 namespace Asafaharbor.Web.HTMLExtensions
@@ -28,6 +30,39 @@ namespace Asafaharbor.Web.HTMLExtensions
 
             return new NonEncodedHtmlString(input);
         }
+
+        public static IHtmlString NotificationSummary<T>(this HtmlHelpers<T> helper, List<NotificationModel> notifications)
+        {
+
+            if (!notifications.Any())
+                return new NonEncodedHtmlString("");
+
+            StringBuilder div = new StringBuilder("<div class=\"notifications\">");
+
+            foreach (var notification in notifications)
+            {
+                switch (notification.Type)
+                {
+                    case NotificationType.Success:
+                        div.Append("<span class='alert-box success'>" +
+                                   notification.Message + "</span>");
+                        break;
+                    case NotificationType.Warning:
+                        div.Append("<span class='alert-box'>" +
+                                   notification.Message + "</span>");
+                        break;
+                    case NotificationType.Error:
+                        div.Append("<span class='alert-box alert'>" +
+                                   notification.Message + "</span>");
+                        break;
+                }
+            }
+
+            div.Append("</div>");
+
+            return new NonEncodedHtmlString(div.ToString());
+        }
+
 
         public static IHtmlString ValidationSummary<T>(this HtmlHelpers<T> helper, List<ErrorModel> errors)
         {

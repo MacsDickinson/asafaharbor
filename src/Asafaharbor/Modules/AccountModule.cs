@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Web;
 using Asafaharbor.Web.Models;
+using Asafaharbor.Web.Models.Enums;
 using Asafaharbor.Web.Utils;
 using Asafaharbor.Web.ViewModels;
 using Nancy.Authentication.Forms;
@@ -55,19 +57,30 @@ namespace Asafaharbor.Web.Modules
                         return View["Register", Model];
                     }
                     var userMapper = new UserMapper(documentSession);
-                    var userGuid = userMapper.ValidateRegisterNewUser(model);
+                    UserAccount userAccount = userMapper.ValidateRegisterNewUser(model);
                     //User already exists
-                    if (userGuid == null)
+                    if (userAccount == null)
                     {
                         Page.Title = "Register";
                         Model.RegisterModel = model;
                         Page.Errors.Add(new ErrorModel() { Name = "Email", ErrorMessage = "This email address has already been registered" });
                         return View["Register", Model];
                     }
+                    string confirmationLink = string.Format("{0}/Account/Confirm/{1}/{2}",
+                                                            HttpContext.Current.Request.Url.Authority, userAccount.UserId, userAccount.ConfirmKey);
+                    Email activationEmail = Email.NewConfirmationEmail(model.Email, confirmationLink, model.Name);
+                    activationEmail.Send();
 
-                    DateTime? expiry = DateTime.Now.AddDays(7);
+                    documentSession.Store(activationEmail);
+                    documentSession.SaveChanges();
 
-                    return this.LoginAndRedirect(userGuid.Value, expiry);
+                    Model.Page.Notifications.Add(new NotificationModel
+                        {
+                            Message = string.Format("Activation email sent to {0}", model.Email),
+                            Type = NotificationType.Success
+                        });
+
+                    return View["LogOn", Model];
                 };
         }
     }

@@ -31,7 +31,8 @@ namespace Asafaharbor.Web.Modules
                     IsAuthenticated = ctx.CurrentUser != null,
                     TitleSuffix = " | ASafaHarbor",
                     CurrentUser = ctx.CurrentUser != null ? ctx.CurrentUser.UserName : "",
-                    Errors = new List<ErrorModel>()
+                    Errors = new List<ErrorModel>(),
+                    Notifications = new List<NotificationModel>()
                 };
 
                 Model.Page = Page;

@@ -37,7 +37,7 @@ namespace Asafaharbor.Web.Utils
             return null;
         }
 
-        public Guid? ValidateRegisterNewUser(RegisterModel newUser)
+        public UserAccount ValidateRegisterNewUser(RegisterModel newUser)
         {
             var salt = Crypto.GenerateSalt();
             var userRecord = new UserAccount
@@ -48,7 +48,9 @@ namespace Asafaharbor.Web.Utils
                 FriendlyName = newUser.Name,
                 Username = newUser.UserName,
                 Salt = salt,
-                Password = Crypto.HashPassword(newUser.Password + salt)
+                Password = Crypto.HashPassword(newUser.Password + salt),
+                ConfirmKey = Guid.NewGuid(),
+                Confirmed = false
             };
 
             var existingUser = _documentSession.Query<UserAccount>().FirstOrDefault(x => x.EMailAddress == userRecord.EMailAddress && x.LoginType == "ASafaHarbor");
@@ -58,7 +60,7 @@ namespace Asafaharbor.Web.Utils
             _documentSession.Store(userRecord);
             _documentSession.SaveChanges();
 
-            return userRecord.UserId;
+            return userRecord;
         }
     }
 }

@@ -62,8 +62,8 @@
                 <hr />
             </div>
         </section>
-        <section class="error">
-            @Html.ValidationSummary((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors)
+        <section class="row">
+            @Html.NotificationSummary((List<Asafaharbor.Web.Models.NotificationModel>)Model.Page.Notifications)
         </section>
         <div id="main" class="row">
             @RenderBody()

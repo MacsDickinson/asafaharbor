@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Asafaharbor.Web.Modules
+﻿namespace Asafaharbor.Web.Modules
 {
     public class HomeModule : BaseModule
     {

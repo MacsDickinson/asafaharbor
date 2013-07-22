@@ -50,7 +50,7 @@ namespace Asafaharbor.Web.Modules
                         {
                             foreach (var member in item.MemberNames)
                             {
-                                Page.Errors.Add(new ErrorModel() {Name = member, ErrorMessage = item.GetMessage(member)});
+                                Page.Errors.Add(new ErrorModel {Name = member, ErrorMessage = item.GetMessage(member)});
                             }
                         }
                         Model.RegisterModel = model;
@@ -64,7 +64,7 @@ namespace Asafaharbor.Web.Modules
                     {
                         Page.Title = "Register";
                         Model.RegisterModel = model;
-                        Page.Errors.Add(new ErrorModel() { Name = "Email", ErrorMessage = "This email address has already been registered" });
+                        Page.Errors.Add(new ErrorModel { Name = "Email", ErrorMessage = "This email address has already been registered" });
                         return View["Register", Model];
                     }
                     string confirmationLink = string.Format("{0}/Account/Confirm/{1}/{2}",

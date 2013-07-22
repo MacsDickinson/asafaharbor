@@ -26,8 +26,8 @@ namespace Asafaharbor.Web.Modules
         {
             Before += ctx =>
             {
-                Page = new PageModel()
-                {
+                Page = new PageModel
+                    {
                     IsAuthenticated = ctx.CurrentUser != null,
                     TitleSuffix = " | ASafaHarbor",
                     CurrentUser = ctx.CurrentUser != null ? ctx.CurrentUser.UserName : "",

@@ -1,5 +1,7 @@
 ﻿using Asafaharbor.Web.Raven;
+using Asafaharbor.Web.Utils;
 using Nancy;
+using Nancy.Authentication.Forms;
 using Raven.Client;
 
 namespace Asafaharbor.Web
@@ -18,6 +20,8 @@ namespace Asafaharbor.Web
         {
             base.ConfigureRequestContainer(container, context);
 
+            container.Register<IUserMapper, UserMapper>();
+
             var store = container.Resolve<IDocumentStore>();
             var documentSesion = store.OpenSession();
 
@@ -27,6 +31,14 @@ namespace Asafaharbor.Web
         protected override void RequestStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines, NancyContext context)
         {
             base.RequestStartup(container, pipelines, context);
+
+            var formsAuthConfiguration =
+                new FormsAuthenticationConfiguration
+                    {
+                    RedirectUrl = "~/account/log-on",
+                    UserMapper = container.Resolve<IUserMapper>(),
+                };
+            FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
 
             pipelines.AfterRequest.AddItemToEndOfPipeline(
                 ctx =>

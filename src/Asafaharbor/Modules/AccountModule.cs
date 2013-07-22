@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using Asafaharbor.Web.Models;
 using Asafaharbor.Web.Models.Enums;
@@ -18,12 +19,12 @@ namespace Asafaharbor.Web.Modules
         {
             Get["/log-in"] = parameters =>
             {
-                Page.Title = "Login";
+                Page.Title = "Log in";
 
                 var loginModel = new LoginModel();
                 Model.LoginModel = loginModel;
 
-                return View["LogOn", Model];
+                return View["LogIn", Model];
             };
 
             Get["/register"] = parameters =>
@@ -80,7 +81,41 @@ namespace Asafaharbor.Web.Modules
                             Type = NotificationType.Success
                         });
 
-                    return View["LogOn", Model];
+                    return View["LogIn", Model];
+                };
+
+            Get["/Confirm/{userid}/{key}"] = parameters =>
+                {
+                    bool linkValid = true;
+                    Guid userId;
+                    if (!Guid.TryParse(parameters.userid, out userId))
+                        linkValid = false;
+                    Guid key;
+                    if (!Guid.TryParse(parameters.key, out key))
+                        linkValid = false;
+                    if (linkValid)
+                    {
+                        var userRecord = documentSession.Query<UserAccount>().FirstOrDefault(x => x.UserId == userId);
+                        if (userRecord != null && userRecord.ConfirmKey == key)
+                        {
+                            userRecord.Confirmed = true;
+                            documentSession.SaveChanges();
+                            Model.Page.Notifications.Add(new NotificationModel
+                            {
+                                Message = "Account confirmed. Welcome to ASafaHarbor " + userRecord.FriendlyName,
+                                Type = NotificationType.Success
+                            });
+                            DateTime? expiry = DateTime.Now.AddDays(7);
+                            this.Login(userRecord.UserId, expiry);
+                            return this.LoginAndRedirect(userRecord.UserId, expiry, "~/Home");
+                        }
+                    }
+                    Model.Page.Notifications.Add(new NotificationModel
+                    {
+                        Message = "Confirmation link invalid",
+                        Type = NotificationType.Error
+                    });
+                    return View["LogIn", Model];
                 };
         }
     }

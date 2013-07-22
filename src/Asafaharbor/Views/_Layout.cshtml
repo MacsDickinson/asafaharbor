@@ -43,7 +43,7 @@
                     <ul class="right">
                         @if (Model.Page.IsAuthenticated)
                         {
-                            <li><a href="@Url.Content("~/Account")">Account</a></li>
+                            <li><a href="@Url.Content("~/Account")"><img src="@Model.Page.ImageUrl" class="gravitar-menu"/> @Model.Page.CurrentUser</a></li>
                             <li><a href="@Url.Content("~/Account/log-out")">Log out</a></li>
                         }
                         else

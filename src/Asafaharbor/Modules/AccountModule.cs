@@ -96,7 +96,7 @@ namespace Asafaharbor.Web.Modules
                     if (linkValid)
                     {
                         var userRecord = documentSession.Query<UserAccount>().FirstOrDefault(x => x.UserId == userId);
-                        if (userRecord != null && userRecord.ConfirmKey == key)
+                        if (userRecord != null && userRecord.ConfirmKey == key && userRecord.Confirmed == false)
                         {
                             userRecord.Confirmed = true;
                             documentSession.SaveChanges();

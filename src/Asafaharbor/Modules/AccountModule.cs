@@ -64,6 +64,12 @@ namespace Asafaharbor.Web.Modules
                     return this.LoginAndRedirect(userId.Value, expiry, "~/");
                 };
 
+            Get["/log-out"] = parameters =>
+                {
+                    return this.LogoutAndRedirect("~/Account/Log-in");
+                };
+            
+
             Get["/register"] = parameters =>
             {
                 Page.Title = "Register";

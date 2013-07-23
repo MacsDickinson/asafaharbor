@@ -4,7 +4,7 @@ using System.Web;
 using Asafaharbor.Web.Models;
 using Asafaharbor.Web.Models.Enums;
 using Asafaharbor.Web.Utils;
-using Asafaharbor.Web.ViewModels;
+using Asafaharbor.Web.ViewModels.Account;
 using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
 using Nancy.Validation;

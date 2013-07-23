@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Asafaharbor.Web.ViewModels
+namespace Asafaharbor.Web.ViewModels.Account
 {
     public class LoginModel
     {

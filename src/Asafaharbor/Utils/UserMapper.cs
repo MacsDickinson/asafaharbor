@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Helpers;
 using Asafaharbor.Web.Models;
-using Asafaharbor.Web.ViewModels;
+using Asafaharbor.Web.ViewModels.Account;
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Security;

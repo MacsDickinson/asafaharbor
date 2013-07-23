@@ -10,3 +10,35 @@ header {
 .gravitar-menu {
     height: 35px;
 }
+
+.project {
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 1.25em;
+    padding: 1.25em;
+}
+    .NotTested {
+        border-color: #d9d9d9;
+        background: #f2f2f2;
+    }
+
+    .Warning {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #ffc04e;
+        background: #ffe7be;
+    }
+
+    .Pass {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #198d0a;
+        background: #c5ffbe;
+    }
+
+    .Fail {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #ff0000;
+        background: #ffbebe;
+    }

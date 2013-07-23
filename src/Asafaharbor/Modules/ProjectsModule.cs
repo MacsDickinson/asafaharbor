@@ -58,6 +58,8 @@ namespace Asafaharbor.Web.Modules
                     documentSession.Store(newProject);
                     documentSession.SaveChanges();
 
+                    Page.Notifications.Add(new NotificationModel { Message = "Project \"" + newProject.Name + "\" Created", Type = NotificationType.Success });
+
                     Page.Title = newProject.Name;
                     Model.Project = newProject;
 

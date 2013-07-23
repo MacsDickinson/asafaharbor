@@ -16,6 +16,8 @@ namespace Asafaharbor.Web.Modules
 
             Get["/"] = parameters =>
                 {
+                    Page.Title = "Projects";
+
                     Model.Projects = documentSession.Query<Project>().Where(x => x.UserId == Page.CurrentUser);
 
                     return View["Dashboard", Model];

@@ -26,5 +26,16 @@ namespace Asafaharbor.Web.Models
                            : Results.OrderByDescending(x => x.DateRun).First().OverallScanStatus;
             }
         }
+        public DateTime? LastScanned
+        {
+            get
+            {
+                if (Results == null)
+                    return null;
+                if (Results.Count == 0)
+                    return null;
+                return Results.OrderByDescending(x => x.DateRun).First().DateRun;
+            }
+        }
     }
 }

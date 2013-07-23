@@ -14,7 +14,6 @@ namespace Asafaharbor.Web.Models
         public string Name { get; set; }
         public string Url { get; set; }
         public List<ScanResults> Results { get; set; }
-        public string ServiceHookUrl { get; set; }
         public ASafaResult Status
         {
             get

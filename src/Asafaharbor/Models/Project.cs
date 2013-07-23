@@ -13,6 +13,7 @@ namespace Asafaharbor.Web.Models
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
+        public ProjectSettings Settings { get; set; }
         public List<ScanResults> Results { get; set; }
         public ASafaResult Status
         {

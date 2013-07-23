@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Asafaharbor.Web.Models;
 using Asafaharbor.Web.Models.Enums;
@@ -53,7 +54,15 @@ namespace Asafaharbor.Web.Modules
                             Url = model.Url,
                             Key = Guid.NewGuid(),
                             UserId = Page.CurrentUser,
-                            ProjectId = Guid.NewGuid()
+                            ProjectId = Guid.NewGuid(),
+                            Settings = new ProjectSettings
+                                {
+                                    FailOnWarnings = false,
+                                    FailOnNotTested = false,
+                                    EmailOnFailure = false,
+                                    TweetOnFailure = false,
+                                    IgnoredTests = new List<ASafaTest>()
+                                }
                         };
                     documentSession.Store(newProject);
                     documentSession.SaveChanges();

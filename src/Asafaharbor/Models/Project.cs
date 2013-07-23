@@ -14,10 +14,13 @@ namespace Asafaharbor.Web.Models
         public string Name { get; set; }
         public string Url { get; set; }
         public List<ScanResults> Results { get; set; }
+        public string ServiceHookUrl { get; set; }
         public ASafaResult Status
         {
             get
             {
+                if (Results == null)
+                    return ASafaResult.NotTested;
                 return Results.Count == 0
                            ? ASafaResult.NotTested
                            : Results.OrderByDescending(x => x.DateRun).First().OverallScanStatus;

@@ -1,0 +1,40 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@using System.Collections.Generic
+@using Asafaharbor.Web.HTMLExtensions
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="small-8 small-offset-2">
+    <div class="row">
+        <form method="POST">
+            <fieldset>
+                <legend>New Project</legend>
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="Name" class="right inline">Name</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <input type="text" id="Name" name="Name" placeholder="e.g. My Awesome Project" value="@Model.NewProjectModel.Name">
+                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Name")
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="Url" class="right inline">Url to Scan</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <input type="text" id="Url" name="Url" placeholder="e.g. myawesomeproject.apphb.com" value="@Model.NewProjectModel.Url">
+                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Url")
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-9 small-offset-3 columns">
+                        <input type="submit" class="small button"/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+

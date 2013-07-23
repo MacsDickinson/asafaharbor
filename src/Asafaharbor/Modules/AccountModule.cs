@@ -154,16 +154,5 @@ namespace Asafaharbor.Web.Modules
                     return View["LogIn", Model];
                 };
         }
-
-        private void AddPageErrors(ModelValidationResult result)
-        {
-            foreach (var item in result.Errors)
-            {
-                foreach (var member in item.MemberNames)
-                {
-                    Page.Errors.Add(new ErrorModel {Name = member, ErrorMessage = item.GetMessage(member)});
-                }
-            }
-        }
     }
 }

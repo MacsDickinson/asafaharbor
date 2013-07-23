@@ -2,6 +2,7 @@
 using System.Dynamic;
 using Asafaharbor.Web.Models;
 using Nancy;
+using Nancy.Validation;
 
 namespace Asafaharbor.Web.Modules
 {
@@ -41,6 +42,17 @@ namespace Asafaharbor.Web.Modules
 
                 return null;
             };
+        }
+
+        internal void AddPageErrors(ModelValidationResult result)
+        {
+            foreach (var item in result.Errors)
+            {
+                foreach (var member in item.MemberNames)
+                {
+                    Page.Errors.Add(new ErrorModel { Name = member, ErrorMessage = item.GetMessage(member) });
+                }
+            }
         }
     }
 }

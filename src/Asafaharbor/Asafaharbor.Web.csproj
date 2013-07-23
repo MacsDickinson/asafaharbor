@@ -153,6 +153,7 @@
     <Compile Include="Utils\UserMapper.cs" />
     <Compile Include="ViewModels\Account\LoginModel.cs" />
     <Compile Include="ViewModels\Account\RegisterModel.cs" />
+    <Compile Include="ViewModels\Projects\NewProjectModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -162,6 +163,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Projects\Dashboard.cshtml" />
+    <Content Include="Views\Projects\New.cshtml" />
+    <Content Include="Views\Projects\View.cshtml" />
     <None Include="Web.AppHarbor.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -172,9 +175,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\Projects\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

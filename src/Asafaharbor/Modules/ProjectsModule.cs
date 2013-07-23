@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Asafaharbor.Web.Models;
+using Asafaharbor.Web.Models.Enums;
 using Asafaharbor.Web.ViewModels.Projects;
 using Nancy.ModelBinding;
 using Nancy.Security;
@@ -52,7 +53,7 @@ namespace Asafaharbor.Web.Modules
                             Url = model.Url,
                             Key = Guid.NewGuid(),
                             UserId = Page.CurrentUser,
-                            
+                            ProjectId = Guid.NewGuid()
                         };
                     documentSession.Store(newProject);
                     documentSession.SaveChanges();
@@ -60,6 +61,26 @@ namespace Asafaharbor.Web.Modules
                     Page.Title = newProject.Name;
                     Model.Project = newProject;
 
+                    return View["View", Model];
+                };
+
+            Get["/View/{projectId}"] = parameters =>
+                {
+                    int projectId;
+                    if (Int32.TryParse(parameters.projectId, out projectId))
+                    {
+                        var project = documentSession.Load<Project>(string.Format("projects/{0}", projectId));
+                        if (project != null && project.UserId == Page.CurrentUser)
+                        {
+                            Page.Title = project.Name;
+                            Model.Project = project;
+                            return View["View", Model];
+                        }
+                    }
+
+                    Page.Notifications.Add(new NotificationModel { Message = "Project not found", Type = NotificationType.Error });
+                    Page.Title = "Project not found";
+                    Model.Project = new Project();
                     return View["View", Model];
                 };
         }

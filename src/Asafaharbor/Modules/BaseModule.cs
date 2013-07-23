@@ -30,7 +30,8 @@ namespace Asafaharbor.Web.Modules
                     {
                     IsAuthenticated = ctx.CurrentUser != null,
                     TitleSuffix = " | ASafaHarbor",
-                    CurrentUser = ctx.CurrentUser != null ? ((UserIdentity)ctx.CurrentUser).FriendlyName : "",
+                    FriendlyName = ctx.CurrentUser != null ? ((UserIdentity)ctx.CurrentUser).FriendlyName : "",
+                    CurrentUser = ctx.CurrentUser != null ? ((UserIdentity)ctx.CurrentUser).UserId : "",
                     ImageUrl = ctx.CurrentUser != null ? ((UserIdentity)ctx.CurrentUser).ImageUrl : "",
                     Errors = new List<ErrorModel>(),
                     Notifications = new List<NotificationModel>()

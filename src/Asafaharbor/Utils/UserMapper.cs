@@ -24,7 +24,7 @@ namespace Asafaharbor.Web.Utils
         {
             var userRecord = _documentSession.Query<UserAccount>().FirstOrDefault(x => x.UserId == identifier);
 
-            return userRecord == null ? null : new UserIdentity { UserName = userRecord.Username, FriendlyName = userRecord.FriendlyName, ImageUrl = userRecord.ImageUrl };
+            return userRecord == null ? null : new UserIdentity { UserName = userRecord.Username, FriendlyName = userRecord.FriendlyName, UserId = userRecord.Id, ImageUrl = userRecord.ImageUrl };
         }
 
         public Guid? ValidateUser(string email, string password)

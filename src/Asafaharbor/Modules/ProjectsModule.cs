@@ -1,4 +1,7 @@
-﻿using Nancy.Security;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Asafaharbor.Web.Models;
+using Nancy.Security;
 using Raven.Client;
 
 namespace Asafaharbor.Web.Modules
@@ -13,7 +16,7 @@ namespace Asafaharbor.Web.Modules
 
             Get["/"] = parameters =>
                 {
-
+                    Model.Projects = documentSession.Query<Project>().Where(x => x.UserId == Page.CurrentUser);
 
                     return View["Dashboard", Model];
                 };

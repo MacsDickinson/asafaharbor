@@ -1,15 +1,42 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
-
+@using Asafaharbor.Web.Models
 @{
     Layout = "_Layout.cshtml";
 }
 <div class="small-10 small-offset-1">
-    <div class="row">
+    <section class="row">
         <div class="large-7 columns">
             <h2>Projects</h2>
         </div>
         <div class="large-3 columns">
             <a href="Projects/New" class="button">Create Project</a>
         </div>
-    </div>
+    </section>
+    @if (@Model.Projects.Count > 0)
+    {
+        foreach (Project project in Model.Projects)
+        {
+            <div class="row @project.Status">
+                <div class="row">
+                    <h4>@project.Name</h4>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns"></div>
+                    <div class="small-2 columns"></div>
+                    <div class="small-2 columns"></div>
+                    <div class="small-2 columns"></div>
+                    <div class="small-2 columns"></div>
+                    <div class="small-2 columns"></div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="row">
+            <h4>
+                You have no projects :( Why not <a href="Projects/New">create one</a>?
+            </h4>
+        </div>
+    }
 </div>

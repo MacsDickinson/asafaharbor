@@ -18,8 +18,7 @@ namespace Asafaharbor.Web.Modules
                 {
                     Page.Title = "Projects";
 
-                    Model.Projects = documentSession.Query<Project>().Where(x => x.UserId == Page.CurrentUser);
-
+                    Model.Projects = documentSession.Query<Project>().Where(x => x.UserId == Page.CurrentUser).ToList();
                     return View["Dashboard", Model];
                 };
         }

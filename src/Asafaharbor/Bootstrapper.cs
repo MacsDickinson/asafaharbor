@@ -2,6 +2,7 @@
 using Asafaharbor.Web.Utils;
 using Nancy;
 using Nancy.Authentication.Forms;
+using Nancy.Cryptography;
 using Raven.Client;
 
 namespace Asafaharbor.Web
@@ -16,6 +17,7 @@ namespace Asafaharbor.Web
 
             container.Register<IDocumentStore>(store);
         }
+
         protected override void ConfigureRequestContainer(Nancy.TinyIoc.TinyIoCContainer container, NancyContext context)
         {
             base.ConfigureRequestContainer(container, context);
@@ -28,38 +30,48 @@ namespace Asafaharbor.Web
             container.Register(documentSesion);
         }
 
-        protected override void RequestStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines, NancyContext context)
+        protected override void RequestStartup(Nancy.TinyIoc.TinyIoCContainer container,
+                                               Nancy.Bootstrapper.IPipelines pipelines, NancyContext context)
         {
             base.RequestStartup(container, pipelines, context);
+
+            var cryptographyConfiguration = new CryptographyConfiguration(
+                new RijndaelEncryptionProvider(new PassphraseKeyGenerator("SuperSecretPass",
+                                                                          new byte[] { 100, 111, 110, 116, 32, 109, 97, 107, 101, 32, 109, 101, 32, 108, 111, 103, 32, 105, 110, 32, 101, 97, 99, 104, 32, 116, 105, 109, 101, 32, 105, 32, 98, 117, 105, 108, 100, 33 })),
+                new DefaultHmacProvider(new PassphraseKeyGenerator("UberSuperSecure",
+                                                                   new byte[] { 90, 71, 57, 117, 100, 67, 66, 116, 89, 87, 116, 108, 73, 71, 49, 108, 73, 71, 120, 118, 90, 121, 66, 112, 98, 105, 66, 108, 89, 87, 78, 111, 73, 72, 82, 112, 98, 87, 85, 103, 97, 83, 66, 105, 100, 87, 108, 115, 90, 67, 69, 61 })));
 
             var formsAuthConfiguration =
                 new FormsAuthenticationConfiguration
                     {
-                    RedirectUrl = "~/account/log-in",
-                    UserMapper = container.Resolve<IUserMapper>(),
-                };
+                        CryptographyConfiguration = cryptographyConfiguration,
+                        RedirectUrl = "~/account/log-in",
+                        UserMapper = container.Resolve<IUserMapper>(),
+                    };
             FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
 
             pipelines.AfterRequest.AddItemToEndOfPipeline(
                 ctx =>
-                {
-                    var documentSession = container.Resolve<IDocumentSession>();
-
-                    if (ctx.Response.StatusCode != HttpStatusCode.InternalServerError)
                     {
-                        documentSession.SaveChanges();
-                    }
+                        var documentSession = container.Resolve<IDocumentSession>();
 
-                    documentSession.Dispose();
-                }
+                        if (ctx.Response.StatusCode != HttpStatusCode.InternalServerError)
+                        {
+                            documentSession.SaveChanges();
+                        }
+
+                        documentSession.Dispose();
+                    }
                 );
         }
 
         protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
         {
             base.ConfigureConventions(nancyConventions);
-            nancyConventions.StaticContentsConventions.Add(Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("Scripts", "Scripts"));
-            nancyConventions.StaticContentsConventions.Add(Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("Styles", "Styles"));
+            nancyConventions.StaticContentsConventions.Add(
+                Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("Scripts", "Scripts"));
+            nancyConventions.StaticContentsConventions.Add(
+                Nancy.Conventions.StaticContentConventionBuilder.AddDirectory("Styles", "Styles"));
         }
     }
 }

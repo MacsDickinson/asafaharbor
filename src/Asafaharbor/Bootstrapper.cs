@@ -35,7 +35,7 @@ namespace Asafaharbor.Web
             var formsAuthConfiguration =
                 new FormsAuthenticationConfiguration
                     {
-                    RedirectUrl = "~/account/log-on",
+                    RedirectUrl = "~/account/log-in",
                     UserMapper = container.Resolve<IUserMapper>(),
                 };
             FormsAuthentication.Enable(pipelines, formsAuthConfiguration);

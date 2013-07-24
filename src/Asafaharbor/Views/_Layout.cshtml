@@ -20,7 +20,6 @@
     <link href="@Url.Content("~/styles/site.css")" rel="stylesheet"/>
     <link href="@Url.Content("~/styles/normalize.css")" rel="stylesheet"/>
     <link href="@Url.Content("~/styles/foundation.css")" rel="stylesheet"/>
-
     @RenderSection("Scripts", required: false)
 </head>
     <body>
@@ -59,8 +58,8 @@
             <div class="large-12 columns">
                 <h2><a href="@Url.Content("~/")" title="ASafaHarbor">ASafaHarbor</a></h2>
                 <p>Automated Security Analyser for AppHarbor</p>
-                <hr />
             </div>
+            <hr />
         </section>
         <section class="row">
             @Html.NotificationSummary((List<Asafaharbor.Web.Models.NotificationModel>)Model.Page.Notifications)

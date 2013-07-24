@@ -6,7 +6,15 @@
 }
 @if (@Model.Project.ProjectId != new Guid())
 {
-    <h2>@Model.Project.Name</h2>
+    <div class="row">
+        <div class="small-6 columns">
+            <h2>@Model.Project.Name</h2>
+        </div>
+        <div class="large-3 columns right">
+            <a href="../EditSettings/@Model.Project.Id.Replace("projects/", "")" class="button" id="settings_button">Settings</a>
+        </div>
+    </div>
+    <hr />
     <div class="small-8 small-centered">
         @if (@Model.Project.Results == null || @Model.Project.Results.Count == 0)
         {

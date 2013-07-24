@@ -94,6 +94,87 @@ namespace Asafaharbor.Web.Modules
                     Model.Project = new Project();
                     return View["View", Model];
                 };
+
+            Get["/EditSettings/{projectId}"] = parameters =>
+                {
+                    int projectId;
+                    if (Int32.TryParse(parameters.projectId, out projectId))
+                    {
+                        var project = documentSession.Load<Project>(string.Format("projects/{0}", projectId));
+                        if (project != null && project.UserId == Page.CurrentUser)
+                        {
+                            Page.Title = project.Name;
+                            EditSettingsModel model = new EditSettingsModel
+                                {
+                                    FailOnWarnings = project.Settings.FailOnWarnings,
+                                    FailOnNotTested = project.Settings.FailOnNotTested,
+                                    EmailOnFailure = project.Settings.EmailOnFailure,
+                                    FailureEmail = project.Settings.FailureEmail,
+                                    TweetOnFailure = project.Settings.TweetOnFailure,
+                                    FailureTwitter = project.Settings.FailureTwitter,
+                                    IgnoredTests = project.Settings.IgnoredTests,
+                                    ProjectId = project.Id,
+                                    ProjectName = project.Name
+                                };
+                            Model.EditSettingsModel = model;
+                            return View["EditSettings", Model];
+                        }
+                    }
+
+                    Page.Notifications.Add(new NotificationModel { Message = "Project not found", Type = NotificationType.Error });
+                    Page.Title = "Project not found";
+                    Model.Project = new Project();
+                    return View["View", Model];
+                };
+
+            Post["/EditSettings/{projectId}"] = parameters =>
+                {
+                    var model = this.Bind<EditSettingsModel>();
+                    var result = this.Validate(model);
+                    
+                    if (!result.IsValid)
+                    {
+                        AddPageErrors(result);
+
+                        Page.Title = model.ProjectName;
+                        Model.EditSettingsModel = model;
+                        return View["EditSettings", Model];
+                    }
+                    int projectId;
+                    if (Int32.TryParse(parameters.projectId, out projectId))
+                    {
+                        var project = documentSession.Load<Project>(string.Format("projects/{0}", projectId));
+                        if (project != null && project.UserId == Page.CurrentUser)
+                        {
+                            Page.Title = project.Name;
+
+                            project.Settings.FailOnWarnings = model.FailOnWarnings;
+                            project.Settings.FailOnNotTested = model.FailOnNotTested;
+                            project.Settings.EmailOnFailure = model.EmailOnFailure;
+                            project.Settings.FailureEmail = model.FailureEmail;
+                            project.Settings.TweetOnFailure = model.TweetOnFailure;
+                            project.Settings.FailureTwitter = model.FailureTwitter;
+                            project.Settings.IgnoredTests = model.IgnoredTests;
+
+                            documentSession.SaveChanges();
+
+                            Page.Notifications.Add(new NotificationModel
+                                {
+                                    Message = "Settings Updated!",
+                                    Type = NotificationType.Success
+                                });
+
+                            Page.Title = project.Name;
+                            Model.Project = project;
+                            return View["View", Model];
+                        }
+                    }
+                    
+                    Page.Notifications.Add(new NotificationModel { Message = "Project not found", Type = NotificationType.Error });
+                    Page.Title = "Project not found";
+                    Model.Project = new Project();
+                    return View["View", Model];
+                };
         }
     }
 }

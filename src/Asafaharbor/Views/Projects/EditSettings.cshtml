@@ -1,0 +1,101 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@using System.Collections.Generic
+@using Asafaharbor.Web.HTMLExtensions
+@{
+    Layout = "_Layout.cshtml";
+}
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            showHideTextbox('#EmailOnFailure', '#FailureEmailDiv');
+            showHideTextbox('#TweetOnFailure', '#FailureTwitterDiv');
+            
+            $('#EmailOnFailure').click(function() {
+                showHideTextbox('#EmailOnFailure', '#FailureEmailDiv');
+            });
+            $('#TweetOnFailure').click(function () {
+                showHideTextbox('#TweetOnFailure', '#FailureTwitterDiv');
+            });
+
+            function showHideTextbox(checkbox, textbox) {
+                if ($(checkbox).is(':checked')) {
+                    $(textbox).show();
+                } else {
+                    $(textbox).hide();
+                }
+            };
+        });
+    </script>
+}
+@if (@Model.EditSettingsModel.ProjectId != "")
+{
+    <div class="row">
+        <div class="small-6 columns">
+            <h2>@Model.EditSettingsModel.ProjectName</h2>
+        </div>
+    </div>
+    <div class="row" id="settings">
+        <div class="small-8 small-offset-2">
+            <form method="POST">
+                <fieldset>
+                    <legend>Settings</legend>
+                    <input type="hidden" name="ProjectId" value="@Model.EditSettingsModel.ProjectId"/>
+                    <div class="row">
+                        <div class="small-10 columns small-offset-1">
+                            <label for="FailOnWarnings">
+                                <input type="checkbox" id="FailOnWarnings"  name="FailOnWarnings"  value="true">
+                                Fail On Warnings
+                            </label>
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>) Model.Page.Errors, "FailOnWarnings")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-10 columns small-offset-1">
+                            <label for="FailOnNotTested">
+                                <input type="checkbox" id="FailOnNotTested"  name="FailOnNotTested"  value="true">
+                                Fail On Not Tested
+                            </label>
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>) Model.Page.Errors, "FailOnWarnings")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-10 columns small-offset-1">
+                            <label for="EmailOnFailure">
+                                <input type="checkbox" id="EmailOnFailure"  name="EmailOnFailure" value="true">
+                                Send Email on failure
+                            </label>
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>) Model.Page.Errors, "EmailOnFailure")
+                        </div>
+                    </div>
+                    <div class="row hide" id="FailureEmailDiv">
+                        <div class="small-10 columns small-offset-1">
+                            <input type="text" id="FailureEmail" name="FailureEmail" placeholder="e.g. @Model.EditSettingsModel.ProjectName.Replace(" ", "")&#64;sharklasers.com" value="@Model.EditSettingsModel.FailureEmail">
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>) Model.Page.Errors, "FailureEmail")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-10 columns small-offset-1">
+                            <label for="TweetOnFailure">
+                                <input type="checkbox" id="TweetOnFailure"  name="TweetOnFailure"  value="@Model.EditSettingsModel.TweetOnFailure">
+                                Send Tweet on failure
+                            </label>
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>) Model.Page.Errors, "TweetOnFailure")
+                        </div>
+                    </div>
+                    <div class="row hide" id="FailureTwitterDiv">
+                        <div class="small-10 columns small-offset-1">
+                            <input type="text" id="FailureTwitter" name="FailureTwitter" placeholder="e.g. &#64;@Model.EditSettingsModel.ProjectName.Replace(" ", "")" value="@Model.EditSettingsModel.FailureTwitter">
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>) Model.Page.Errors, "FailureTwitter")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-10 small-offset-1 columns">
+                            <input type="submit" class="small button"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+}

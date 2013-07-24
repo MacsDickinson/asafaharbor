@@ -61,7 +61,7 @@ namespace Asafaharbor.Web.Modules
                     {
                         expiry = null;
                     }
-                    return this.LoginAndRedirect(userId.Value, expiry, "~/");
+                    return this.LoginAndRedirect(userId.Value, expiry, "~/Projects");
                 };
 
             Get["/log-out"] = parameters =>
@@ -142,7 +142,7 @@ namespace Asafaharbor.Web.Modules
                                 Type = NotificationType.Success
                             });
                             DateTime? expiry = DateTime.Now.AddDays(7);
-                            return this.LoginAndRedirect(userRecord.UserId, expiry, "~/");
+                            return this.LoginAndRedirect(userRecord.UserId, expiry, "~/Projects");
                         }
                     }
                     Model.Page.Notifications.Add(new NotificationModel

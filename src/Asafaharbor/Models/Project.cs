@@ -37,5 +37,10 @@ namespace Asafaharbor.Web.Models
                 return Results.OrderByDescending(x => x.DateRun).First().DateRun;
             }
         }
+
+        public ScanResults Scan(string apiUsername, string apiKey)
+        {
+            return new ScanResults();
+        }
     }
 }

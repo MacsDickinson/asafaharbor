@@ -1,17 +1,27 @@
-﻿using Asafaharbor.Web.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Asafaharbor.Web.Models;
 
 namespace Asafaharbor.Web.ViewModels.Account
 {
     public class EditAccountModel
     {
+        [Required]
         public string Username { get; set; }
+        [Required]
         public string FriendlyName { get; set; }
+        [Required, EmailAddress]
         public string EMailAddress { get; set; }
-        public string Password { get; set; }
+        [Url]
         public string Website { get; set; }
         public string ASafaApiUsername { get; set; }
         public string ASafaApiKey { get; set; }
+        [Url]
         public string ImageUrl { get; set; }
+
+        public EditAccountModel()
+        {
+            
+        }
 
         public EditAccountModel(UserAccount user)
         {

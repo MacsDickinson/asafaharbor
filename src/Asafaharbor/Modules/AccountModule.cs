@@ -5,8 +5,10 @@ using Asafaharbor.Web.Models;
 using Asafaharbor.Web.Models.Enums;
 using Asafaharbor.Web.Utils;
 using Asafaharbor.Web.ViewModels.Account;
+using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
+using Nancy.Responses;
 using Nancy.Security;
 using Nancy.Validation;
 using Raven.Client;
@@ -40,6 +42,40 @@ namespace Asafaharbor.Web.Modules
                     Page.Title = "Log in";
                     Model.LoginModel = new LoginModel();
                     return View["LogIn", Model];
+                };
+
+            Post["/"] = parameters =>
+                {
+                    this.RequiresAuthentication();
+
+                    var model = this.Bind<EditAccountModel>();
+                    var result = this.Validate(model);
+
+                    if (!result.IsValid)
+                    {
+                        AddPageErrors(result);
+
+                        Page.Title = "Account";
+                        Model.User = model;
+                        return View["Edit", Model];
+                    }
+
+                    UserAccount user = documentSession.Load<UserAccount>(Page.CurrentUser);
+
+                    if (user != null)
+                    {
+                        user.Username = model.Username;
+                        user.FriendlyName = model.FriendlyName;
+                        user.EMailAddress = model.EMailAddress;
+                        user.Website = model.Website;
+                        user.ASafaApiUsername = model.ASafaApiUsername;
+                        user.ASafaApiKey = model.ASafaApiKey;
+                        user.ImageUrl = model.ImageUrl;
+
+                        documentSession.SaveChanges();
+                    }
+
+                    return new RedirectResponse("Projects", RedirectResponse.RedirectType.Temporary);
                 };
 
             Get["/log-in"] = parameters =>

@@ -27,6 +27,14 @@ namespace Asafaharbor.Web.Modules
                     return View["Dashboard", Model];
                 };
 
+            Post["/"] = parameters =>
+            {
+                Page.Title = "Projects";
+
+                Model.Projects = documentSession.Query<Project>().Where(x => x.UserId == Page.CurrentUser).ToList();
+                return View["Dashboard", Model];
+            };
+
             Get["/New/"] = parameters =>
                 {
                     Page.Title = "New Project";

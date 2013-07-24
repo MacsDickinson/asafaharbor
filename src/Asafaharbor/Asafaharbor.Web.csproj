@@ -155,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Raven\RavenSessionProvider.cs" />
     <Compile Include="Utils\UserMapper.cs" />
+    <Compile Include="ViewModels\Account\EditAccountModel.cs" />
     <Compile Include="ViewModels\Account\LoginModel.cs" />
     <Compile Include="ViewModels\Account\RegisterModel.cs" />
     <Compile Include="ViewModels\Projects\EditSettingsModel.cs" />
@@ -171,6 +172,7 @@
     <Content Include="Views\Projects\New.cshtml" />
     <Content Include="Views\Projects\View.cshtml" />
     <Content Include="Views\Projects\EditSettings.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
     <None Include="Web.AppHarbor.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

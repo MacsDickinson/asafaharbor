@@ -7,6 +7,7 @@ using Asafaharbor.Web.Utils;
 using Asafaharbor.Web.ViewModels.Account;
 using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
+using Nancy.Security;
 using Nancy.Validation;
 using Raven.Client;
 
@@ -17,6 +18,30 @@ namespace Asafaharbor.Web.Modules
         public AccountModule(IDocumentSession documentSession)
             : base("/account")
         {
+            Get["/"] = parameters =>
+                {
+                    this.RequiresAuthentication();
+
+                    UserAccount user = documentSession.Load<UserAccount>(Page.CurrentUser);
+
+                    if (user != null)
+                    {
+                        Page.Title = "Account";
+                        Model.User = new EditAccountModel(user);
+                        return View["Edit", Model];
+                    }
+
+                    Page.Notifications.Add(new NotificationModel
+                        {
+                            Message = "User not found. Please log in.",
+                            Type = NotificationType.Error
+                        });
+
+                    Page.Title = "Log in";
+                    Model.LoginModel = new LoginModel();
+                    return View["LogIn", Model];
+                };
+
             Get["/log-in"] = parameters =>
             {
                 Page.Title = "Log in";

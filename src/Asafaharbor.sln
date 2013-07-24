@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7556F6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asafaweb.api", "asafaweb.api\asafaweb.api.csproj", "{C6C7DDBC-AE98-4108-AEBB-BD55B6D72633}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asafaweb.tests", "asafaweb.tests\asafaweb.tests.csproj", "{E17F129F-520F-413B-A202-D0AEC3DF989B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppHarbor|Any CPU = AppHarbor|Any CPU
@@ -32,6 +34,12 @@ Global
 		{C6C7DDBC-AE98-4108-AEBB-BD55B6D72633}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C7DDBC-AE98-4108-AEBB-BD55B6D72633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6C7DDBC-AE98-4108-AEBB-BD55B6D72633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E17F129F-520F-413B-A202-D0AEC3DF989B}.AppHarbor|Any CPU.ActiveCfg = Release|Any CPU
+		{E17F129F-520F-413B-A202-D0AEC3DF989B}.AppHarbor|Any CPU.Build.0 = Release|Any CPU
+		{E17F129F-520F-413B-A202-D0AEC3DF989B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E17F129F-520F-413B-A202-D0AEC3DF989B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E17F129F-520F-413B-A202-D0AEC3DF989B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E17F129F-520F-413B-A202-D0AEC3DF989B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

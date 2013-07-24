@@ -40,15 +40,70 @@
             foreach (var result in @Model.Project.Results)
             {
                 <div class="row scan @result.Results.OverallScanStatus">
-                    <div class="small-3 columns">
-                        <h4>@result.Results.OverallScanStatus</h4>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <h4>@result.Results.OverallScanStatus- @result.DateRun.ToString("g")</h4>
+                        </div>
+                        <div class="small-6 columns">
+                            <a href="../../Scan/View/@result.ScanResultId" class="button right" >View</a>
+                        </div>
                     </div>
-                    <div class="small-6 columns">
-                        <h4>Run: @result.DateRun.ToString("g")</h4>
-                    </div>
-                    <div class="small-3 columns">
-                        <a href="../../Scan/View/@result.ScanResultId" class="button" >View</a>
-                    </div>
+                    @if (@result.Results.FailedScans.Count > 0)
+                    {
+                        <div class="row">
+                            <div class="small-3 columns">
+                                Failures: 
+                            </div>
+                            <div class="small-9 columns">
+                                <ul>
+                                    @foreach (var scan in @result.Results.FailedScans)
+                                    {
+                                        <li>
+                                            @scan.ScanType
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                    
+                    @if (@result.Results.WarningScans.Count > 0)
+                    {
+                        <div class="row">
+                            <div class="small-3 columns">
+                                Warnings: 
+                            </div>
+                            <div class="small-9 columns">
+                                <ul>
+                                    @foreach (var scan in @result.Results.WarningScans)
+                                    {
+                                        <li>
+                                            @scan.ScanType
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+                    @if (@result.Results.NotRunScans.Count > 0)
+                    {
+                        <div class="row">
+                            <div class="small-3 columns">
+                                Warnings: 
+                            </div>
+                            <div class="small-9 columns">
+                                <ul>
+                                    @foreach (var scan in @result.Results.NotRunScans)
+                                    {
+                                        <li>
+                                            @scan.ScanType
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
                 </div>
             }
         }

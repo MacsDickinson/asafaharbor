@@ -50,13 +50,13 @@
                 </section>
             </nav>
         </header>
-        <section class="row">
+        <section>
             <div class="large-10 large-offset-1 columns">
                 @Html.NotificationSummary((List<Asafaharbor.Web.Models.NotificationModel>)Model.Page.Notifications)
             </div>
         </section>
-        <div id="main" class="row">
-            <div class="large-10 large-offset-1 columns">
+        <div id="main">
+            <div class="small-10 columns small-centered">
                 @RenderBody()
             </div>
         </div>

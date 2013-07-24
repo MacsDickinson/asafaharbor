@@ -11,7 +11,7 @@ header {
     height: 35px;
 }
 
-.project {
+.project, .scan {
     border-style: solid;
     border-width: 1px;
     margin-bottom: 1.25em;

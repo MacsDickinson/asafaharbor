@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace asafaweb.console.Models
+namespace asafaweb.api.Models
 {
     public class Request
     {

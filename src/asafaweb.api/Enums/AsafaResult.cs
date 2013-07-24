@@ -1,6 +1,6 @@
-﻿namespace asafaweb.console.Enums
+﻿namespace asafaweb.api.Enums
 {
-    public enum AsafaResult
+    public enum ASafaResult
     {
         Fail,
         Warning,

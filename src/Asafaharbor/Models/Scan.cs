@@ -1,4 +1,4 @@
-﻿using Asafaharbor.Web.Models.Enums;
+﻿using asafaweb.api.Enums;
 
 namespace Asafaharbor.Web.Models
 {

@@ -5,7 +5,6 @@ using Asafaharbor.Web.Models;
 using Asafaharbor.Web.Models.Enums;
 using Asafaharbor.Web.Utils;
 using Asafaharbor.Web.ViewModels.Account;
-using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
 using Nancy.Responses;
@@ -125,10 +124,7 @@ namespace Asafaharbor.Web.Modules
                     return this.LoginAndRedirect(userId.Value, expiry, "~/Projects");
                 };
 
-            Get["/log-out"] = parameters =>
-                {
-                    return this.LogoutAndRedirect("~/Account/Log-in");
-                };
+            Get["/log-out"] = parameters => this.LogoutAndRedirect("~/Account/Log-in");
             
 
             Get["/register"] = parameters =>

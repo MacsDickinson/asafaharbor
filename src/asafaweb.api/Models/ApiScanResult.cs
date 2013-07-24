@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using asafaweb.console.Enums;
+using asafaweb.api.Enums;
 
-namespace asafaweb.console.Models
+namespace asafaweb.api.Models
 {
     public class ApiScanResult
     {
@@ -16,6 +16,6 @@ namespace asafaweb.console.Models
         public string XAspNetMvcVersion { get; set; }
         public string[] XPoweredBy { get; set; }
         public string AspNetVersion { get; set; }
-        public AsafaResult OverallScanStatus { get; set; }
+        public ASafaResult OverallScanStatus { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace asafaweb.console.Exceptions
+namespace asafaweb.api.Exceptions
 {
     public class ApiException : Exception
     {

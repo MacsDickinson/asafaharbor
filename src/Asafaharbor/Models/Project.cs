@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Asafaharbor.Web.Models.Enums;
+using asafaweb.api.Enums;
+using asafaweb.api.Logic;
 
 namespace Asafaharbor.Web.Models
 {
@@ -23,7 +25,7 @@ namespace Asafaharbor.Web.Models
                     return ASafaResult.NotTested;
                 return Results.Count == 0
                            ? ASafaResult.NotTested
-                           : Results.OrderByDescending(x => x.DateRun).First().OverallScanStatus;
+                           : Results.OrderByDescending(x => x.DateRun).First().Results.OverallScanStatus;
             }
         }
         public DateTime? LastScanned
@@ -38,9 +40,18 @@ namespace Asafaharbor.Web.Models
             }
         }
 
-        public ScanResults Scan(string apiUsername, string apiKey)
+        public ScanResults Scan(string name, string key)
         {
-            return new ScanResults();
+
+            ApiLogic api = new ApiLogic(name, key, Url);
+
+            ScanResults scanResults = new ScanResults
+                {
+                    DateRun = DateTime.Now,
+                    ScanResultId = Guid.NewGuid(),
+                    Results = api.Scan()
+                };
+            return scanResults;
         }
     }
 }

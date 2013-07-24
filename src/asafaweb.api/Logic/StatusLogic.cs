@@ -3,8 +3,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using HtmlAgilityPack;
-using asafaweb.console.Enums;
-using asafaweb.console.Models;
+using asafaweb.api.Enums;
+using asafaweb.api.Models;
 
 namespace asafaweb.api.Logic
 {
@@ -25,28 +25,28 @@ namespace asafaweb.api.Logic
             IgnoredTests = new List<string>();
         }
 
-        public Dictionary<string, AsafaResult> AnalyseResults(ApiScanResult results)
+        public Dictionary<string, ASafaResult> AnalyseResults(ApiScanResult results)
         {
-            Dictionary<string, AsafaResult> failedResults = new Dictionary<string, AsafaResult>();
+            Dictionary<string, ASafaResult> failedResults = new Dictionary<string, ASafaResult>();
             foreach (Scan scan in results.Scans.Where(x => !IsTestIgnored(x.ScanType)))
             {
                 if (FailOnWarning)
                 {
-                    if (scan.ScanStatus == AsafaResult.Warning)
+                    if (scan.ScanStatus == ASafaResult.Warning)
                     {
                         failedResults.Add(scan.ScanType, scan.ScanStatus);
                     }
                 }
                 if (FailOnNotTested)
                 {
-                    if (scan.ScanStatus == AsafaResult.NotTested)
+                    if (scan.ScanStatus == ASafaResult.NotTested)
                     {
                         failedResults.Add(scan.ScanType, scan.ScanStatus);
                     }
                 }
                 if (FailOnFailure)
                 {
-                    if (scan.ScanStatus == AsafaResult.Fail)
+                    if (scan.ScanStatus == ASafaResult.Fail)
                     {
                         failedResults.Add(scan.ScanType, scan.ScanStatus);
                     }
@@ -55,28 +55,28 @@ namespace asafaweb.api.Logic
             return failedResults;
         }
 
-        public Dictionary<string, AsafaResult> AnalyseResults(Dictionary<string, AsafaResult> results)
+        public Dictionary<string, ASafaResult> AnalyseResults(Dictionary<string, ASafaResult> results)
         {
-            Dictionary<string, AsafaResult> failedResults = new Dictionary<string, AsafaResult>();
-            foreach (KeyValuePair<string, AsafaResult> asafaResult in results.Where(asafaResult => !IsTestIgnored(asafaResult.Key)))
+            Dictionary<string, ASafaResult> failedResults = new Dictionary<string, ASafaResult>();
+            foreach (KeyValuePair<string, ASafaResult> asafaResult in results.Where(asafaResult => !IsTestIgnored(asafaResult.Key)))
             {
                 if (FailOnWarning)
                 {
-                    if (asafaResult.Value == AsafaResult.Warning)
+                    if (asafaResult.Value == ASafaResult.Warning)
                     {
                         failedResults.Add(asafaResult.Key, asafaResult.Value);
                     }
                 }
                 if (FailOnNotTested)
                 {
-                    if (asafaResult.Value == AsafaResult.NotTested)
+                    if (asafaResult.Value == ASafaResult.NotTested)
                     {
                         failedResults.Add(asafaResult.Key, asafaResult.Value);
                     }
                 }
                 if (FailOnFailure)
                 {
-                    if (asafaResult.Value == AsafaResult.Fail)
+                    if (asafaResult.Value == ASafaResult.Fail)
                     {
                         failedResults.Add(asafaResult.Key, asafaResult.Value);
                     }
@@ -93,22 +93,22 @@ namespace asafaweb.api.Logic
 
         #region Static Methods
 
-        public static AsafaResult GetStatus(string status)
+        public static ASafaResult GetStatus(string status)
         {
             switch (status)
             {
                 case "Pass":
-                    return AsafaResult.Pass;
+                    return ASafaResult.Pass;
                 case "Fail":
-                    return AsafaResult.Fail;
+                    return ASafaResult.Fail;
                 case "Warning":
-                    return AsafaResult.Warning;
+                    return ASafaResult.Warning;
                 default:
-                    return AsafaResult.NotTested;
+                    return ASafaResult.NotTested;
             }
         }
 
-        public static Dictionary<string, AsafaResult> GetTestResults(string url)
+        public static Dictionary<string, ASafaResult> GetTestResults(string url)
         {
             HtmlGetLogic htmlLogic = new HtmlGetLogic();
             try
@@ -117,11 +117,11 @@ namespace asafaweb.api.Logic
                 HtmlNodeCollection nodesMatchingXPath = response.DocumentNode.SelectNodes("//div[@id='StatusSummary']/span");
                 return nodesMatchingXPath != null
                     ? nodesMatchingXPath.ToDictionary(element => element.Attributes["id"].Value.Replace("Summary", ""), element => GetStatus(element.Attributes["class"].Value))
-                    : new Dictionary<string, AsafaResult>();
+                    : new Dictionary<string, ASafaResult>();
             }
             catch (WebException)
             {
-                return new Dictionary<string, AsafaResult>();
+                return new Dictionary<string, ASafaResult>();
             }
         }
 

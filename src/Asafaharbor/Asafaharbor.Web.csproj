@@ -135,7 +135,6 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="HTMLExtensions\HtmlExtensions.cs" />
     <Compile Include="Models\Email.cs" />
-    <Compile Include="Models\Enums\ASafaResult.cs" />
     <Compile Include="Models\Enums\ASafaTest.cs" />
     <Compile Include="Models\Enums\NotificationType.cs" />
     <Compile Include="Models\ErrorModel.cs" />
@@ -184,7 +183,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\asafaweb.api\asafaweb.api.csproj">
+      <Project>{C6C7DDBC-AE98-4108-AEBB-BD55B6D72633}</Project>
+      <Name>asafaweb.api</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

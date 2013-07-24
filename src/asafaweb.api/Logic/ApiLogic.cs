@@ -1,20 +1,20 @@
 ﻿using System.Net;
 using Newtonsoft.Json;
-using asafaweb.console.Exceptions;
-using asafaweb.console.Models;
+using asafaweb.api.Exceptions;
+using asafaweb.api.Models;
 
-namespace asafaweb.console.Logic
+namespace asafaweb.api.Logic
 {
     public class ApiLogic
     {
         private readonly string _username;
         private readonly string _key;
         private readonly string _urlToScan;
-        private const string API_URL_FORMAT = "https://asafaweb.com/Api/Scanner?url={0}&username={1}&apikey={2}";
+        private const string ApiUrlFormat = "https://asafaweb.com/Api/Scanner?url={0}&username={1}&apikey={2}";
 
         private string ScanUrl
         {
-            get { return string.Format(API_URL_FORMAT, _urlToScan, _username, _key); }
+            get { return string.Format(ApiUrlFormat, _urlToScan, _username, _key); }
         }
 
         public ApiLogic(string username,string key, string urlToScan)

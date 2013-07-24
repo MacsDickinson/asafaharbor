@@ -122,7 +122,8 @@ namespace Asafaharbor.Web.Modules
                                     FailureTwitter = project.Settings.FailureTwitter,
                                     IgnoredTests = project.Settings.IgnoredTests,
                                     ProjectId = project.Id,
-                                    ProjectName = project.Name
+                                    ProjectName = project.Name,
+                                    UrlToScan = project.Url
                                 };
                             Model.EditSettingsModel = model;
                             return View["EditSettings", Model];
@@ -163,6 +164,8 @@ namespace Asafaharbor.Web.Modules
                             project.Settings.TweetOnFailure = model.TweetOnFailure;
                             project.Settings.FailureTwitter = model.FailureTwitter;
                             project.Settings.IgnoredTests = model.IgnoredTests;
+                            project.Name = model.ProjectName;
+                            project.Url = model.UrlToScan;
 
                             documentSession.SaveChanges();
 

@@ -7,7 +7,10 @@ namespace Asafaharbor.Web.ViewModels.Projects
     public class EditSettingsModel
     {
         public string ProjectId { get; set; }
+        [Required]
         public string ProjectName { get; set; }
+        [Required]
+        public string UrlToScan { get; set; }
         [Required]
         public bool FailOnWarnings { get; set; }
         [Required]

@@ -31,15 +31,31 @@
 @if (@Model.EditSettingsModel.ProjectId != "")
 {
     <div class="row">
-        <div class="small-6 columns">
-            <h2>@Model.EditSettingsModel.ProjectName</h2>
-        </div>
+        <h2>@Model.EditSettingsModel.ProjectName</h2>
     </div>
     <div class="row" id="settings">
         <div class="small-8 small-offset-2">
             <form method="POST">
                 <fieldset>
                     <legend>Settings</legend>
+                    <div class="row">
+                        <div class="small-3 columns">
+                            <label for="ProjectName" class="right inline">Name</label>
+                        </div>
+                        <div class="small-9 columns">
+                            <input type="text" id="ProjectName" name="ProjectName" placeholder="e.g. My Awesome Project" value="@Model.EditSettingsModel.ProjectName">
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ProjectName")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-3 columns">
+                            <label for="UrlToScan" class="right inline">Url to Scan</label>
+                        </div>
+                        <div class="small-9 columns">
+                            <input type="text" id="UrlToScan" name="UrlToScan" placeholder="e.g. myawesomeproject.apphb.com" value="@Model.EditSettingsModel.UrlToScan">
+                            @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "UrlToScan")
+                        </div>
+                    </div>
                     <input type="hidden" name="ProjectId" value="@Model.EditSettingsModel.ProjectId"/>
                     <div class="row">
                         <div class="small-10 columns small-offset-1">

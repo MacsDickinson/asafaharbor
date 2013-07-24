@@ -160,6 +160,7 @@
     <Compile Include="ViewModels\Account\RegisterModel.cs" />
     <Compile Include="ViewModels\Projects\EditSettingsModel.cs" />
     <Compile Include="ViewModels\Projects\NewProjectModel.cs" />
+    <Compile Include="ViewModels\Scan\ScanModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -173,6 +174,7 @@
     <Content Include="Views\Projects\View.cshtml" />
     <Content Include="Views\Projects\EditSettings.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Scan\View.cshtml" />
     <None Include="Web.AppHarbor.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

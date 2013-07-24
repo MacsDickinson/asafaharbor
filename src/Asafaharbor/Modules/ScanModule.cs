@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Asafaharbor.Web.Models;
+using Asafaharbor.Web.Models.Enums;
+using Asafaharbor.Web.ViewModels.Scan;
+using Nancy.Security;
 using Raven.Client;
 
 namespace Asafaharbor.Web.Modules
@@ -37,12 +40,63 @@ namespace Asafaharbor.Web.Modules
 
                             project.Results.Add(results);
 
-                            documentSession.SaveChanges();   
+                            documentSession.SaveChanges();
+
+                            ScanModel model = new ScanModel
+                            {
+                                DateRun = results.DateRun,
+                                ProjectName = project.Name,
+                                Results = results.Results
+                            };
+                            Model.Scan = model;
+                            return View["View", Model];
                         }
                     }
                 }
                 return null;
             };
+
+            Get["/View/{projectId}/{scanId}"] = parameters =>
+                {
+                    this.RequiresAuthentication();
+
+                    Page.Title = "Scan Details";
+
+                    bool linkValid = true;
+                    int projectId;
+                    if (!Int32.TryParse(parameters.projectId, out projectId))
+                        linkValid = false;
+                    Guid scanId;
+                    if (!Guid.TryParse(parameters.scanId, out scanId))
+                        linkValid = false;
+
+                    if (linkValid)
+                    {
+                        var project = documentSession.Load<Project>("projects/" + projectId);
+                        if (project != null)
+                        {
+                            var scans = project.Results.Where(r => r.ScanResultId == scanId).ToList();
+                            if (scans.Count() == 1)
+                            {
+                                ScanResults scan = scans.Take(1).FirstOrDefault();
+                                if (scan != null)
+                                {
+                                    ScanModel model = new ScanModel
+                                        {
+                                            DateRun = scan.DateRun,
+                                            ProjectName = project.Name,
+                                            Results = scan.Results
+                                        };
+                                    Model.Scan = model;
+                                    return View["View", Model];
+                                }
+                            }
+                        }
+                    }
+
+                    Page.Notifications.Add(new NotificationModel { Message = "Unexpected Scan ID", Type = NotificationType.Error});
+                    return View["View", Model];
+                };
         }
     }
 }

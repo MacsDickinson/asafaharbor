@@ -45,7 +45,7 @@
                             <h4>@result.Results.OverallScanStatus- @result.DateRun.ToString("g")</h4>
                         </div>
                         <div class="small-6 columns">
-                            <a href="../../Scan/View/@result.ScanResultId" class="button right" >View</a>
+                            <a href="../../Scan/View/@Model.Project.Id.Replace("projects/", "")/@result.ScanResultId" class="button right" >View</a>
                         </div>
                     </div>
                     @if (@result.Results.FailedScans.Count > 0)

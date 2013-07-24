@@ -1,0 +1,71 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@using System
+@{
+    Layout = "_Layout.cshtml";
+}
+@if (@Model.Scan != null)
+{
+    <div class="row">
+        <h4>@Model.Scan.ProjectName - @Model.Scan.DateRun</h4>
+    </div>
+    <div class="row">
+        Scan of @Model.Scan.Results.ScanUri - @Model.Scan.Results.SiteTitle
+    </div>
+    <div class="row panel">
+        <div class="row">
+            <div class="small-6 large-4 columns">
+                <span class="heavy">Server:</span>
+                @Model.Scan.Results.ServerHeader
+            </div>
+            <div class="small-6 large-4 columns">
+                <span class="heavy">X-Powered-By:</span>
+                @String.Join(" ", Model.Scan.Results.XPoweredBy)
+            </div>
+            <div class="small-6 large-4 columns">
+                <span class="heavy">X-AspNet-Version:</span>
+                @Model.Scan.Results.XAspNetVersion
+            </div>
+            <div class="small-6 large-4 columns">
+                <span class="heavy">X-AspNetMvc-Version:</span>
+                @Model.Scan.Results.XAspNetMvcVersion
+            </div>
+            <div class="small-6 large-4 columns">
+                <span class="heavy">ASP.NET version:</span>
+                @Model.Scan.Results.AspNetVersion
+            </div>
+        </div>
+        <div class="row ">
+            <div class="small-12 columns">
+                <b>@Model.Scan.Results.Requests.Count</b> requests were made by ASafaWeb:
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <table>
+                    <thead>
+                        <th>URL</th>
+                        <th>Page title</th>
+                        <th>Response size</th>
+                        <th>Duration</th>
+                    </thead>
+                    <tbody>
+                        @foreach (var request in @Model.Scan.Results.Requests)
+                        {
+                            <tr>
+                                <td>@request.ResponseUri</td>
+                                <td>@request.PageTitle</td>
+                                <td>@request.ResponseBytes bytes</td>
+                                <td>@request.DurationMs ms</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    @foreach (var scan in @Model.Scan.Results.Scans)
+     {
+
+     }
+}

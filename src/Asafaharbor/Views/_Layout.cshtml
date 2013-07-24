@@ -32,17 +32,13 @@
                 <section class="top-bar-section">
                     <!-- Left Nav Section -->
                     <ul class="left">
-                        <li><a href="@Url.Content("~/")">Home</a></li>
-                        <li><a href="@Url.Content("~/About")">About</a></li>
-                        @if (Model.Page.IsAuthenticated)
-                        {
-                            <li><a href="@Url.Content("~/Projects")">Projects</a></li>
-                        }
+                        <li><a href="@Url.Content("~/")" title="ASafaHarbor"><img src="~/Content/Images/ASafaHarbor-Logo.png" alt="ASafaHarbor" class="logo"/></a></li>
                     </ul>
                     <ul class="right">
                         @if (Model.Page.IsAuthenticated)
                         {
-                            <li><a href="@Url.Content("~/Account")"><img src="@Model.Page.ImageUrl" class="gravitar-menu"/> @Model.Page.FriendlyName</a></li>
+                            <li><a href="@Url.Content("~/Projects")">Projects</a></li>
+                            <li class="title"><a href="@Url.Content("~/Account")">@Model.Page.FriendlyName <img src="@Model.Page.ImageUrl" class="gravitar-menu"/></a></li>
                             <li><a href="@Url.Content("~/Account/log-out")">Log out</a></li>
                         }
                         else
@@ -55,17 +51,14 @@
             </nav>
         </header>
         <section class="row">
-            <div class="large-12 columns">
-                <h2><a href="@Url.Content("~/")" title="ASafaHarbor">ASafaHarbor</a></h2>
-                <p>Automated Security Analyser for AppHarbor</p>
+            <div class="large-10 large-offset-1 columns">
+                @Html.NotificationSummary((List<Asafaharbor.Web.Models.NotificationModel>)Model.Page.Notifications)
             </div>
-            <hr />
-        </section>
-        <section class="row">
-            @Html.NotificationSummary((List<Asafaharbor.Web.Models.NotificationModel>)Model.Page.Notifications)
         </section>
         <div id="main" class="row">
-            @RenderBody()
+            <div class="large-10 large-offset-1 columns">
+                @RenderBody()
+            </div>
         </div>
     </body>
 </html>

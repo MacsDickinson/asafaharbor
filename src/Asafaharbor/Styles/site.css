@@ -42,3 +42,7 @@ header {
         border-color: #ff0000;
         background: #ffbebe;
     }
+
+.logo {
+     height: 25px;
+}

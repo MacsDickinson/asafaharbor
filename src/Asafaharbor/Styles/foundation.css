@@ -2784,7 +2784,7 @@ label.error {
 /* Wrapped around .top-bar to contain to grid width */
 .contain-to-grid {
   width: 100%;
-  background: #111111; }
+  background: #1F1E1E; }
   .contain-to-grid .top-bar {
     margin-bottom: 1.875em; }
 
@@ -2800,7 +2800,7 @@ label.error {
   height: 45px;
   line-height: 45px;
   position: relative;
-  background: #111111;
+  background: #1F1E1E;
   margin-bottom: 1.875em; }
   .top-bar ul {
     margin-bottom: 0;
@@ -2871,7 +2871,7 @@ label.error {
     height: auto;
     background: transparent; }
     .top-bar.expanded .title-area {
-      background: #111111; }
+      background: #1F1E1E; }
     .top-bar.expanded .toggle-topbar a {
       color: #888888; }
       .top-bar.expanded .toggle-topbar a span {
@@ -2902,7 +2902,7 @@ label.error {
   .top-bar-section ul li > a {
     display: block;
     width: 100%;
-    color: white;
+    color: #e2dbdb;
     padding: 12px 0 12px 0;
     padding-left: 15px;
     font-size: 0.8125em;
@@ -2989,7 +2989,7 @@ label.error {
 
 @media only screen and (min-width: 58.75em) {
   .top-bar {
-    background: #111111;
+    background: #1F1E1E;
     *zoom: 1;
     overflow: visible; }
     .top-bar:before, .top-bar:after {
@@ -3012,7 +3012,7 @@ label.error {
       position: relative;
       top: 8px; }
     .top-bar.expanded {
-      background: #111111; }
+      background: #1F1E1E; }
 
   .contain-to-grid .top-bar {
     max-width: 62.5em;
@@ -3035,7 +3035,7 @@ label.error {
     .top-bar-section li a:not(.button) {
       padding: 0 15px;
       line-height: 45px;
-      background: #111111; }
+      background: #1F1E1E; }
       .top-bar-section li a:not(.button).hover {
         background: black; }
     .top-bar-section .has-dropdown > a {
@@ -3087,7 +3087,7 @@ label.error {
       height: 45px;
       width: 0px; }
     .top-bar-section .has-form {
-      background: #111111;
+      background: #1F1E1E;
       padding: 0 15px;
       height: 45px; }
     .top-bar-section ul.right li .dropdown {
@@ -3572,7 +3572,7 @@ label.error {
     margin-right: 10px; }
 
 .clearing-blackout {
-  background: #111111;
+  background: #1F1E1E;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -3606,7 +3606,7 @@ label.error {
   margin-bottom: 0;
   text-align: center;
   bottom: 0;
-  background: #111111;
+  background: #1F1E1E;
   width: 100%;
   padding: 10px 30px;
   position: absolute;
@@ -3667,7 +3667,7 @@ label.error {
     opacity: 0.5; }
 
   .clearing-assembled .clearing-container .carousel {
-    background: #111111;
+    background: #1F1E1E;
     height: 150px;
     margin-top: 5px; }
     .clearing-assembled .clearing-container .carousel > ul {
@@ -3704,7 +3704,7 @@ label.error {
         .clearing-assembled .clearing-container .carousel > ul li.visible {
           opacity: 1; }
   .clearing-assembled .clearing-container .visible-img {
-    background: #111111;
+    background: #1F1E1E;
     overflow: hidden;
     height: 75%; }
 

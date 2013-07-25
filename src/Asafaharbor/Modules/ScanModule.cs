@@ -85,7 +85,8 @@ namespace Asafaharbor.Web.Modules
                                         {
                                             DateRun = scan.DateRun,
                                             ProjectName = project.Name,
-                                            Results = scan.Results
+                                            Results = scan.Results,
+                                            ProjectId = project.Id.Replace("projects/", "")
                                         };
                                     Model.Scan = model;
                                     return View["View", Model];

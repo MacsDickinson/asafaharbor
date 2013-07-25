@@ -14,7 +14,7 @@
 @if (@Model.Scan != null)
 {
     <div class="row">
-        <h4>@Model.Scan.ProjectName - @Model.Scan.DateRun</h4>
+        <h4><a href=""@Url.Content("~/Projects/View/"+@Model.Scan.ProjectId)">@Model.Scan.ProjectName</a> - @Model.Scan.DateRun</h4>
     </div>
     <div class="row">
         Scan of @Model.Scan.Results.ScanUri - @Model.Scan.Results.SiteTitle

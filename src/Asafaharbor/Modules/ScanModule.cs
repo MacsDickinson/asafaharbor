@@ -56,6 +56,39 @@ namespace Asafaharbor.Web.Modules
                 return null;
             };
 
+            Post["/{projectId}/{key}"] = parameters =>
+                {
+                    bool linkValid = true;
+                    Guid projectId;
+                    if (!Guid.TryParse(parameters.projectId, out projectId))
+                        linkValid = false;
+                    Guid key;
+                    if (!Guid.TryParse(parameters.key, out key))
+                        linkValid = false;
+                    if (linkValid)
+                    {
+                        var project = documentSession.Query<Project>().FirstOrDefault(x => x.ProjectId == projectId);
+
+                        if (project != null && project.Key == key)
+                        {
+                            var user = documentSession.Load<UserAccount>(project.UserId);
+
+                            if (user != null)
+                            {
+                                var results = project.Scan(user.ASafaApiUsername, user.ASafaApiKey);
+
+                                if (project.Results == null)
+                                    project.Results = new List<ScanResults>();
+
+                                project.Results.Add(results);
+
+                                documentSession.SaveChanges();
+                            }
+                        }
+                    }
+                    return null;
+                };
+
             Get["/View/{projectId}/{scanId}"] = parameters =>
                 {
                     this.RequiresAuthentication();

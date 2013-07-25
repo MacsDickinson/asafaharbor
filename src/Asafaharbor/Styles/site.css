@@ -11,36 +11,48 @@ header {
     height: 35px;
 }
 
-.project, .scan {
+div.Pass {
+    border-color: #467b2b;
+}
+div.Warning {
+    border-color: #e19817;
+}
+div.Fail {
+    border-color: #b4140e;
+}
+
+h5 span.Pass.result {
+    color: #467b2b;
+}
+h5 span.Warning.result {
+    color: #e19817;
+}
+h5 span.Fail.result {
+    color: #b4140e;
+}
+
+.project, .scan, .scanResult {
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     margin-bottom: 1.25em !important;
     padding: 1.25em;
 }
-    .NotTested {
+
+    .project.NotTested, .scan.NotTested, .scanResult.NotTested  {
         border-color: #d9d9d9;
         background: #f2f2f2;
     }
 
-    .Warning {
-        border-style: solid;
-        border-width: 1px;
-        border-color: #ffc04e;
-        background: #ffe7be;
+    .project.Warning, .scan.Warning, .scanResult.Warning  {
+        background: #F6E0B9;
     }
 
-    .Pass {
-        border-style: solid;
-        border-width: 1px;
-        border-color: #198d0a;
-        background: #c5ffbe;
+    .project.Pass, .scan.Pass, .scanResult.Pass  {
+        background: #C8D7BF;
     }
 
-    .Fail {
-        border-style: solid;
-        border-width: 1px;
-        border-color: #ff0000;
-        background: #ffbebe;
+    .project.Fail, .scan.Fail, .scanResult.Fail  {
+        background: #E8B8B7;
     }
 
     .scan ul {
@@ -58,4 +70,25 @@ header {
 
 .heavy {
     font-weight: bold;
+}
+
+.statusSummary span {
+    cursor: pointer;
+    padding: 5px 7px 5px 7px;
+    margin: 0 3px 8px 0;
+    display: inline-table;
+    border: none;
+}
+    .statusSummary .Pass {
+        background-color: #467b2b;
+    }
+    .statusSummary .Warning {
+        background-color: #e19817;
+    }
+    .statusSummary .Fail {
+        background-color: #b4140e;
+    }
+
+.scanSummary {
+    font-size: 0.8em;
 }

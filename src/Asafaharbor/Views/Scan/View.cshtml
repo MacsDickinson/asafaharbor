@@ -3,6 +3,14 @@
 @{
     Layout = "_Layout.cshtml";
 }
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $('.statusSummary').children().click(function () { location.href = '#' + this.id.replace('Summary', 'Result'); });
+        });
+    </script>
+}
 @if (@Model.Scan != null)
 {
     <div class="row">
@@ -63,9 +71,30 @@
             </div>
         </div>
     </div>
-    
+    <div class="row statusSummary">
+        @foreach (var scan in @Model.Scan.Results.Scans)
+        {
+            <span class="@scan.ScanStatus" id="@scan.ScanType-Summary">
+                @scan.ScanType : @scan.ScanStatus
+            </span>
+        }
+    </div>
     @foreach (var scan in @Model.Scan.Results.Scans)
-     {
-
-     }
+    {
+        <div class="scanResult @scan.ScanStatus" id="@scan.ScanType-Result">
+            <h5>@scan.ScanType: <span class="@scan.ScanStatus result">@scan.ScanStatus</span></h5>
+            <div class="panel scanSummary">
+                <b>Requested URL</b>: @scan.Request.RequrestUri
+                | <b>Response URL</b>: @scan.Request.ResponseUri
+                | <b>Page title</b>: @scan.Request.PageTitle
+                | <b>HTTP status code</b>: @scan.Request.HttpStatusCode (@scan.Request.HttpStatusDescription)
+                | <b>Response size</b>: @scan.Request.ResponseBytes bytes
+                @if (@scan.Request.IsResponseGzipped)
+                {
+                    <span>(gzip'd)</span>
+                }
+                | <b>Duration</b>: @scan.Request.DurationMs ms
+            </div>
+        </div>
+    }
 }

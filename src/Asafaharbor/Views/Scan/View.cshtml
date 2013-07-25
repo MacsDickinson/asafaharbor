@@ -81,7 +81,7 @@
     </div>
     @foreach (var scan in @Model.Scan.Results.Scans)
     {
-        <div class="scanResult @scan.ScanStatus" id="@scan.ScanType-Result">
+        <div class="row scanResult @scan.ScanStatus" id="@scan.ScanType-Result">
             <h5>@scan.ScanType: <span class="@scan.ScanStatus result">@scan.ScanStatus</span></h5>
             <div class="panel scanSummary">
                 <b>Requested URL</b>: @scan.Request.RequrestUri

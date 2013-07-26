@@ -3,12 +3,18 @@ using Asafaharbor.Web.Utils;
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Cryptography;
+using Nancy.Diagnostics;
 using Raven.Client;
 
 namespace Asafaharbor.Web
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
+        protected override DiagnosticsConfiguration DiagnosticsConfiguration
+        {
+            get { return new DiagnosticsConfiguration { Password = @"?eUYoJ9J" }; }
+        }
+
         protected override void ConfigureApplicationContainer(Nancy.TinyIoc.TinyIoCContainer container)
         {
             base.ConfigureApplicationContainer(container);

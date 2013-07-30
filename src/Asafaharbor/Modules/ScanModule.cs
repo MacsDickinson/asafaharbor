@@ -48,6 +48,7 @@ namespace Asafaharbor.Web.Modules
                                 ProjectName = project.Name,
                                 Results = results.Results
                             };
+                            Page.Title = "Scan Results";
                             Model.Scan = model;
                             return View["View", Model];
                         }
@@ -121,6 +122,7 @@ namespace Asafaharbor.Web.Modules
                                             Results = scan.Results,
                                             ProjectId = project.Id.Replace("projects/", "")
                                         };
+                                    Page.Title = "Scan Results";
                                     Model.Scan = model;
                                     return View["View", Model];
                                 }

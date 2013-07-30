@@ -5,85 +5,86 @@
 @{
     Layout = "_Layout.cshtml";
 }
-
+<div class="row">
 <h2>Edit Account</h2>
-<form method="POST">
-    <fieldset>
-        <div class="row">
-            <div class="small-3 columns">
-                <label for="Username" class="right inline">Username</label>
-            </div>
-            <div class="small-9 columns">
-                <input type="text" id="Username" name="Username" placeholder="e.g. johnsmith" value="@Model.User.Username">
-                @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Username")
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-3 columns">
-                <label for="FriendlyName" class="right inline">Name</label>
-            </div>
-            <div class="small-9 columns">
-                <input type="text" id="FriendlyName" name="FriendlyName" placeholder="e.g. John Smith" value="@Model.User.FriendlyName">
-                @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "FriendlyName")
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-3 columns">
-                <label for="EMailAddress" class="right inline">Email</label>
-            </div>
-            <div class="small-9 columns">
-                <input type="text" id="EMailAddress" name="EMailAddress" placeholder="e.g. johnsmith@sharklasers.com" value="@Model.User.EMailAddress">
-                @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "EMailAddress")
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-3 columns">
-                <label for="Website" class="right inline">Website</label>
-            </div>
-            <div class="small-9 columns">
-                <input type="text" id="Website" name="Website" placeholder="e.g. www.johnsmith.com" value="@Model.User.Website">
-                @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Website")
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-3 columns">
-                <label for="ASafaApiUsername" class="right inline">ASafaWeb API Username</label>
-            </div>
-            <div class="small-9 columns">
-                <input type="text" id="ASafaApiUsername" name="ASafaApiUsername" value="@Model.User.ASafaApiUsername">
-                @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ASafaApiUsername")
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-3 columns">
-                <label for="ASafaApiKey" class="right inline">ASafaWeb API Key</label>
-            </div>
-            <div class="small-9 columns">
-                <input type="text" id="ASafaApiKey" name="ASafaApiKey" value="@Model.User.ASafaApiKey">
-                @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ASafaApiKey")
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-3 columns">
-                <label for="ImageUrl" class="right inline">ImageUrl</label>
-            </div>
-            <div class="small-9 columns">
-                <input type="text" id="ImageUrl" name="ImageUrl" placeholder="e.g. " value="@Model.User.ImageUrl">
-                @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ImageUrl")
-            </div>
-        </div>
-        @if (!string.IsNullOrEmpty(Model.User.ImageUrl))
-        {
+    <form method="POST" >
+        <fieldset>
             <div class="row">
-                <div class="small-9 small-offset-3 columns">
-                    <img src="@Model.User.ImageUrl" alt="avitar" style="padding: 0 0 10px;"/>
+                <div class="small-3 columns">
+                    <label for="Username" class="right inline">Username</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="Username" name="Username" placeholder="e.g. johnsmith" value="@Model.User.Username">
+                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Username")
                 </div>
             </div>
-        }
-        <div class="row">
-            <div class="small-9 small-offset-3 columns">
-                <input type="submit" class="small button"/>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="FriendlyName" class="right inline">Name</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="FriendlyName" name="FriendlyName" placeholder="e.g. John Smith" value="@Model.User.FriendlyName">
+                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "FriendlyName")
+                </div>
             </div>
-        </div>
-    </fieldset>
-</form>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="EMailAddress" class="right inline">Email</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="EMailAddress" name="EMailAddress" placeholder="e.g. johnsmith@sharklasers.com" value="@Model.User.EMailAddress">
+                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "EMailAddress")
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="Website" class="right inline">Website</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="Website" name="Website" placeholder="e.g. www.johnsmith.com" value="@Model.User.Website">
+                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Website")
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="ASafaApiUsername" class="right inline">ASafaWeb API Username</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="ASafaApiUsername" name="ASafaApiUsername" value="@Model.User.ASafaApiUsername">
+                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ASafaApiUsername")
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="ASafaApiKey" class="right inline">ASafaWeb API Key</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="ASafaApiKey" name="ASafaApiKey" value="@Model.User.ASafaApiKey">
+                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ASafaApiKey")
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-3 columns">
+                    <label for="ImageUrl" class="right inline">ImageUrl</label>
+                </div>
+                <div class="small-9 columns">
+                    <input type="text" id="ImageUrl" name="ImageUrl" placeholder="e.g. " value="@Model.User.ImageUrl">
+                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ImageUrl")
+                </div>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.User.ImageUrl))
+            {
+                <div class="row">
+                    <div class="small-9 small-offset-3 columns">
+                        <img src="@Model.User.ImageUrl" alt="avitar" style="padding: 0 0 10px;"/>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="small-9 small-offset-3 columns">
+                    <input type="submit" class="small button"/>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

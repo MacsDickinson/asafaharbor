@@ -1,4 +1,5 @@
 ﻿using Asafaharbor.Web.Raven;
+using Asafaharbor.Web.Responses;
 using Asafaharbor.Web.Utils;
 using Nancy;
 using Nancy.Authentication.Forms;
@@ -39,6 +40,8 @@ namespace Asafaharbor.Web
         protected override void RequestStartup(Nancy.TinyIoc.TinyIoCContainer container,
                                                Nancy.Bootstrapper.IPipelines pipelines, NancyContext context)
         {
+            pipelines.OnError.AddItemToEndOfPipeline((ctx, ex) => ErrorResponse.FromException(ex));
+
             base.RequestStartup(container, pipelines, context);
 
             var cryptographyConfiguration = new CryptographyConfiguration(

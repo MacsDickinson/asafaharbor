@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Asafaharbor.Web.Models;
 using Asafaharbor.Web.Models.Enums;
+using Nancy;
 using Nancy.ViewEngines.Razor;
 
 namespace Asafaharbor.Web.HTMLExtensions

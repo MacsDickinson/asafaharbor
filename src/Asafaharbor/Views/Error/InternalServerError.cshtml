@@ -1,0 +1,14 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+  Layout = "_Layout.cshtml";
+}
+<div class="row">
+     @if (@Model.Error != null)
+    {
+        <h2>Uh oh - @Model.Error.Summary</h2>
+        <p>Sorry about that - these things just happen some time.</p>
+        <p>Your unique error code is @Model.Error.ErrorId</p>
+        <p>Details: @Model.Error.StackTrace</p>
+    }
+</div>

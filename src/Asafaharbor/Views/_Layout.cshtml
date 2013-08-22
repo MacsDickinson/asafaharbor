@@ -52,12 +52,10 @@
                 </div>
             </nav>
         </header>
-        <section>
-            <div class="small-10 columns small-centered">
+        <div id="main">
+            <div class="row small-10 columns small-centered">
                 @Html.NotificationSummary((List<Asafaharbor.Web.Models.NotificationModel>)Model.Page.Notifications)
             </div>
-        </section>
-        <div id="main">
             <div class="small-10 columns small-centered">
                 @RenderBody()
             </div>

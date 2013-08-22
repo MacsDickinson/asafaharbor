@@ -38,16 +38,7 @@ namespace Asafaharbor.Web.Renderers
                 Page.ImageUrl = user.ImageUrl;
                 Page.FriendlyName = user.FriendlyName;
             }
-            else
-            {
-                Page.Notifications.Add(new NotificationModel
-                    {
-                        Message = "Please log in to access this page.",
-                        Type = NotificationType.Error
-                    });
-                Model.LoginModel = new LoginModel();
-                return RenderView(context, "Account/Login", Model);
-            }
+
             response.StatusCode = statusCode;
 
             switch (statusCode)

@@ -110,147 +110,147 @@ h5 span.Fail.result {
     font-size: 0.8em;
 }
 
+.page-wrap {
+    width: 100%;
+    float: right;
+    transition: width 0.3s ease;
+}
+
+a.sidebar-button {
+    margin-top: 8px;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+    a.sidebar-button img {
+        margin-top: -6px;
+        width: 23px;
+    }
+
+    a.sidebar-button h4 {
+        font-size: 22px !important;
+        display: inline !important;
+        margin-left: 10px;
+        line-height: 1;
+        color: #fff;
+        font-weight: bold !important;
+    }
+
+#sidebar {
+    width: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #3B3B3B;
+    overflow-y: auto;
+    padding: 0px;
+    -webkit-box-shadow: inset -2px 0px 8px -1px #111111;
+    box-shadow: inset -2px 0px 8px -1px #111111;
+    padding-top: 10px;
+}
+
+
 @media screen and (max-width: 58.75em) {
-    .page-wrap {
+    #sidebar:target {
+        width: 60%;
+    }
+
+        #sidebar:target + .page-wrap {
+            width: 40%;
+        }
+}
+
+
+#sidebar h5 a {
+    font-size: 20px !important;
+}
+
+#sidebar hr {
+    margin: 8px 0 20px 0;
+    border-color: #444444 !important;
+}
+
+#sidebar h6, #sidebar h5 {
+    color: #727272;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    font-family: 'Proxima Nova Condensed', 'proxima-nova-condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#sidebar h6 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#sidebar .nav-bar {
+    background: none;
+    margin-bottom: 0px;
+}
+
+    #sidebar .nav-bar li {
         width: 100%;
-        float: right;
-        transition: width 0.3s ease;
+        box-shadow: none !important;
     }
 
-    a.sidebar-button {
-        margin-top: 8px;
-        margin-bottom: 6px;
-        display: inline-block;
-    }
-
-        a.sidebar-button img {
-            margin-top: -6px;
-            width: 23px;
-        }
-
-        a.sidebar-button h4 {
-            font-size: 22px !important;
-            display: inline !important;
-            margin-left: 10px;
-            line-height: 1;
-            color: #fff;
-            font-weight: bold !important;
-        }
-
-    #sidebar {
-        
-        width: 0;
-        transition: width 0.3s ease;
-        overflow: hidden;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        background: #3B3B3B;
-        overflow-y: auto;
-        padding: 0px;
-        -webkit-box-shadow: inset -2px 0px 8px -1px #111111;
-        box-shadow: inset -2px 0px 8px -1px #111111;
-        padding-top: 10px;
-    }
-
-
-        #sidebar:target {
-            width: 60%;
-        }
-
-            #sidebar:target + .page-wrap {
-                width: 40%;
-            }
-
-        #sidebar h5 a {
+        #sidebar .nav-bar li a {
             font-size: 20px !important;
+            font-weight: 500;
+            color: #ccc;
+            font-family: 'Proxima Nova','ProximaNova', 'proxima-nova';
+            font-weight: 600;
+            padding: 0px !important;
         }
 
-        #sidebar hr {
-            margin: 8px 0 20px 0;
-            border-color: #444444 !important;
-        }
+.nav-bar {
+    height: 110px;
+    background: #4d4d4d;
+    margin-left: 0;
+    margin-top: 8px !important;
+}
 
-        #sidebar h6, #sidebar h5 {
-            color: #727272;
-            text-transform: uppercase;
-            margin-bottom: 0px;
-            font-family: 'Proxima Nova Condensed', 'proxima-nova-condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-
-        #sidebar h6 {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        #sidebar .nav-bar {
-            background: none;
-            margin-bottom: 0px;
-        }
-
-            #sidebar .nav-bar li {
-                width: 100%;
-                box-shadow: none !important;
-            }
-
-                #sidebar .nav-bar li a {
-                    font-size: 20px !important;
-                    font-weight: 500;
-                    color: #ccc;
-                    font-family: 'Proxima Nova','ProximaNova', 'proxima-nova';
-                    font-weight: 600;
-                    padding: 0px !important;
-                }
-
-    .nav-bar {
-        height: 110px;
+    .nav-bar.goodness {
+        height: 120px;
         background: #4d4d4d;
         margin-left: 0;
-        margin-top: 8px !important;
+        margin-top: 20px;
+        padding: 0;
     }
 
-        .nav-bar.goodness {
-            height: 120px;
-            background: #4d4d4d;
-            margin-left: 0;
-            margin-top: 20px;
-            padding: 0;
+    .nav-bar > li {
+        float: left;
+        display: block;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        border-right: none;
+        line-height: 38px;
+    }
+
+        .nav-bar > li a.current {
+            color: #ffffff !important;
+            font-weight: 700;
         }
 
-        .nav-bar > li {
-            float: left;
+        .nav-bar > li > a {
+            color: #bbbbbb;
             display: block;
-            position: relative;
-            padding: 0;
-            margin: 0;
-            border-right: none;
-            line-height: 38px;
         }
 
-            .nav-bar > li a.current {
-                color: #ffffff !important;
-                font-weight: 700;
-            }
+        .nav-bar > li ul {
+            margin-bottom: 0;
+        }
 
-            .nav-bar > li > a {
-                color: #bbbbbb;
-                display: block;
-            }
+        .nav-bar > li .flyout {
+            display: none;
+        }
 
-            .nav-bar > li ul {
-                margin-bottom: 0;
-            }
+#sidebar .main-menu {
+    overflow-x: hidden;
+}
 
-            .nav-bar > li .flyout {
-                display: none;
-            }
-
-    #sidebar .main-menu {
-        overflow-x: hidden;
-    }
-
-    #sidebar .main-menu, #sidebar .more-goodness, #sidebar .zurb-links {
-        padding: 0px 15px;
-    }
+#sidebar .main-menu, #sidebar .more-goodness, #sidebar .zurb-links {
+    padding: 0px 15px;
 }

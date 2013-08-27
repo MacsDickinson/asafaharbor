@@ -166,7 +166,9 @@
     <Content Include="Styles\foundation.min.css" />
     <Content Include="Styles\normalize.css" />
     <Content Include="Styles\site.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />

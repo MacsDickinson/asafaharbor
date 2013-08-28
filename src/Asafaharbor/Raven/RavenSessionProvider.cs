@@ -17,7 +17,7 @@ namespace Asafaharbor.Web.Raven
         {
             var store = new DocumentStore
             {
-                ConnectionStringName = "RavenHQ"
+                ConnectionStringName = "RAVENHQ_CONNECTION_STRING"
             };
 
             store.Initialize();

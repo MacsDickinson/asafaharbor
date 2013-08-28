@@ -1,4 +1,5 @@
-﻿using Raven.Client.Document;
+﻿using System.Configuration;
+using Raven.Client.Document;
 
 namespace Asafaharbor.Web.Raven
 {
@@ -16,10 +17,11 @@ namespace Asafaharbor.Web.Raven
         private static DocumentStore CreateDocumentStore()
         {
             var store = new DocumentStore
-            {
-                ConnectionStringName = "RAVENHQ_CONNECTION_STRING"
-            };
-
+                {
+                    Url = ConfigurationManager.AppSettings["RAVENHQ_URI"],
+                    DefaultDatabase = ConfigurationManager.AppSettings["RAVENHQ_Database"],
+                    ApiKey = ConfigurationManager.AppSettings["RAVENHQ_APIKEY"],
+                };
             store.Initialize();
 
             return store;

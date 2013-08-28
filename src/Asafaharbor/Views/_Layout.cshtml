@@ -27,12 +27,12 @@
             <div class="main-menu">
                 <h6>ASafaHarbor</h6>
                 <ul class="nav-bar">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="@Url.Content("~/")">Home</a></li>
                     @if (Model.Page.IsAuthenticated)
                     {
                         <li><a href="@Url.Content("~/Projects")">Projects</a></li>
                         <li class="title"><a href="@Url.Content("~/Account")">@Model.Page.FriendlyName
-                                                <img src="@Model.Page.ImageUrl" class="gravitar-menu"/></a></li>
+                                              <img src="@Model.Page.ImageUrl" class="gravitar-menu"/></a></li>
                         <li><a href="@Url.Content("~/Account/log-out")">Log out</a></li>
                     }
                     else
@@ -40,6 +40,14 @@
                         <li><a href="@Url.Content("~/Account/log-in")">Log in</a></li>
                         <li><a href="@Url.Content("~/Account/register")">Register</a></li>
                     }
+                </ul>
+            </div>
+            <hr/>
+            <div class="macsen-menu">
+                <h6>Macs Dickinson</h6>
+                <ul class="nav-bar">
+                    <li><a href="http://www.macsentom.co.uk" target="_blank">Blog</a></li>
+                    <li><a href="http://www.macsentom.co.uk/SecurePass" target="_blank">SecurePass</a></li>
                 </ul>
             </div>
         </div>

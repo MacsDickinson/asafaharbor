@@ -155,11 +155,11 @@ a.sidebar-button {
 
 @media screen and (max-width: 58.75em) {
     #sidebar:target {
-        width: 60%;
+        width: 30%;
     }
 
         #sidebar:target + .page-wrap {
-            width: 40%;
+            width: 70%;
         }
 }
 
@@ -251,6 +251,6 @@ a.sidebar-button {
     overflow-x: hidden;
 }
 
-#sidebar .main-menu, #sidebar .more-goodness, #sidebar .zurb-links {
+#sidebar .main-menu, #sidebar .macsen-menu {
     padding: 0px 15px;
 }

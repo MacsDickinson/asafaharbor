@@ -47,8 +47,7 @@
                     @if (Model.Page.IsAuthenticated)
                     {
                         <li><a href="@Url.Content("~/Projects")">Projects</a></li>
-                        <li class="title"><a href="@Url.Content("~/Account")">@Model.Page.FriendlyName
-                                              <img src="@Model.Page.ImageUrl" class="gravitar-menu"/></a></li>
+                        <li class="title"><a href="@Url.Content("~/Account")">Account</a></li>
                         <li><a href="@Url.Content("~/Account/log-out")">Log out</a></li>
                     }
                     else

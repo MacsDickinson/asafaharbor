@@ -152,9 +152,9 @@ a.sidebar-button {
     height: 100%;
     background: #3B3B3B;
     overflow-y: auto;
-    padding: 0px;
-    -webkit-box-shadow: inset -2px 0px 8px -1px #111111;
-    box-shadow: inset -2px 0px 8px -1px #111111;
+    padding: 0;
+    -webkit-box-shadow: inset -12px 0 12px -8px #111111;
+    box-shadow: inset -12px 0 12px -8px #111111;
     padding-top: 10px;
 }
 

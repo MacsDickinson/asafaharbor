@@ -21,6 +21,22 @@
     <link href="@Url.Content("~/styles/site.css")" rel="stylesheet"/>
 
     @RenderSection("Scripts", required: false)
+    
+    <script type="text/javascript">
+        $(function () {
+            $('.toggle-topbar').toggle(function() {
+                $('#sidebar').css('width', '30%');
+                $('.page-wrap').css('width', '70%');
+            }, function() {
+                $('#sidebar').css('width', '0');
+                $('.page-wrap').css('width', '100%');
+            });
+            //$(document).on('click', '.toggle-topbar', function() {
+            //    $('#sidebar').css('width', '30%');
+            //    $('.page-wrap').css('width', '70%');
+            //});
+        })
+    </script>
 </head>
     <body>
         <div id="sidebar">

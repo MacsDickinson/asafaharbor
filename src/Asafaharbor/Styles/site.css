@@ -160,13 +160,13 @@ a.sidebar-button {
 
 
 @media screen and (max-width: 58.75em) {
-    #sidebar:target {
+    /*#sidebar:target {
         width: 30%;
     }
 
         #sidebar:target + .page-wrap {
             width: 70%;
-        }
+        }*/
 }
 
 

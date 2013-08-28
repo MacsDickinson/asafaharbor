@@ -15,8 +15,14 @@ li {
     height: 35px;
 }
 
+.top-bar .toggle-topbar.menu-icon {
+    left: 0;
+    right: auto;
+}
+
 .title-logo {
-    margin-left: 10px;
+    text-align: right;
+    margin-right: 10px;
     line-height: 45px;
 }
 

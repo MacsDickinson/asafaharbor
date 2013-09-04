@@ -70,6 +70,7 @@ namespace Asafaharbor.Web.Renderers
                     response = RenderView(context, "Error/internalServerError", Model);
                     break;
             }
+            new LogEvent(errorMessage).Raise();
             Page.Notifications.Add(new NotificationModel
             {
                 Type = NotificationType.Error,

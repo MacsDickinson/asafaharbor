@@ -172,6 +172,7 @@
     <Compile Include="Models\Enums\ASafaTest.cs" />
     <Compile Include="Models\Enums\NotificationType.cs" />
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\LogEvent.cs" />
     <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\Project.cs" />

@@ -9,5 +9,10 @@ namespace Asafaharbor.Web.Models
             : base(null, null, 100001, new Exception(message))
         {
         }
+        
+        public LogEvent(string message, Exception exception)
+            : base(null, null, 100001, new Exception(message, exception))
+        {
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Asafaharbor.Web.Raven;
+﻿using Asafaharbor.Web.Models;
+using Asafaharbor.Web.Raven;
 using Asafaharbor.Web.Responses;
 using Asafaharbor.Web.Utils;
 using Nancy;
@@ -40,7 +41,11 @@ namespace Asafaharbor.Web
         protected override void RequestStartup(Nancy.TinyIoc.TinyIoCContainer container,
                                                Nancy.Bootstrapper.IPipelines pipelines, NancyContext context)
         {
-            pipelines.OnError.AddItemToEndOfPipeline((ctx, ex) => ErrorResponse.FromException(ex));
+            pipelines.OnError.AddItemToEndOfPipeline((ctx, ex) =>
+                {
+                    new LogEvent("An unhandled exception occurred", ex).Raise();
+                    return ErrorResponse.FromException(ex);
+                });
 
             base.RequestStartup(container, pipelines, context);
 

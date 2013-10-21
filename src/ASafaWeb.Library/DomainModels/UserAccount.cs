@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Asafaharbor.Web.Models
+namespace ASafaWeb.Library.DomainModels
 {
     public class UserAccount
     {

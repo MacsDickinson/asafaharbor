@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Asafaharbor.Web.Models;
+using ASafaWeb.Library.DomainModels;
 
 namespace Asafaharbor.Web.ViewModels.Account
 {

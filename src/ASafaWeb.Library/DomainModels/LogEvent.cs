@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Management;
 
-namespace Asafaharbor.Web.Models
+namespace ASafaWeb.Library.DomainModels
 {
     public class LogEvent : WebRequestErrorEvent
     {

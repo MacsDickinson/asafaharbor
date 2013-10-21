@@ -1,4 +1,5 @@
 ﻿@using System.Collections.Generic
+@using ASafaWeb.Library.DomainModels
 @using Asafaharbor.Web.HTMLExtensions
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 
@@ -16,7 +17,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="text" id="Email" name="Email" placeholder="e.g. johnsmith@sharklasers.com" value="@Model.LoginModel.Email">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Email")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Email")
                     </div>
                 </div>
                 <div class="row">
@@ -25,7 +26,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="password" id="Password" name="Password">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Password")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Password")
                     </div>
                 </div>
                 <div class="row">

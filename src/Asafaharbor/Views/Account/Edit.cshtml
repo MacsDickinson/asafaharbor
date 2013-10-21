@@ -1,4 +1,5 @@
 ﻿@using System.Collections.Generic
+@using ASafaWeb.Library.DomainModels
 @using Asafaharbor.Web.HTMLExtensions
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 
@@ -15,7 +16,7 @@
                 </div>
                 <div class="small-9 columns">
                     <input type="text" id="Username" name="Username" placeholder="e.g. johnsmith" value="@Model.User.Username">
-                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Username")
+                    @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Username")
                 </div>
             </div>
             <div class="row">
@@ -24,7 +25,7 @@
                 </div>
                 <div class="small-9 columns">
                     <input type="text" id="FriendlyName" name="FriendlyName" placeholder="e.g. John Smith" value="@Model.User.FriendlyName">
-                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "FriendlyName")
+                    @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "FriendlyName")
                 </div>
             </div>
             <div class="row">
@@ -33,7 +34,7 @@
                 </div>
                 <div class="small-9 columns">
                     <input type="text" id="EMailAddress" name="EMailAddress" placeholder="e.g. johnsmith@sharklasers.com" value="@Model.User.EMailAddress">
-                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "EMailAddress")
+                    @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "EMailAddress")
                 </div>
             </div>
             <div class="row">
@@ -42,7 +43,7 @@
                 </div>
                 <div class="small-9 columns">
                     <input type="text" id="Website" name="Website" placeholder="e.g. www.johnsmith.com" value="@Model.User.Website">
-                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Website")
+                    @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Website")
                 </div>
             </div>
             <div class="row">
@@ -51,7 +52,7 @@
                 </div>
                 <div class="small-9 columns">
                     <input type="text" id="ASafaApiUsername" name="ASafaApiUsername" value="@Model.User.ASafaApiUsername">
-                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ASafaApiUsername")
+                    @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "ASafaApiUsername")
                 </div>
             </div>
             <div class="row">
@@ -60,7 +61,7 @@
                 </div>
                 <div class="small-9 columns">
                     <input type="text" id="ASafaApiKey" name="ASafaApiKey" value="@Model.User.ASafaApiKey">
-                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ASafaApiKey")
+                    @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "ASafaApiKey")
                 </div>
             </div>
             <div class="row">
@@ -69,7 +70,7 @@
                 </div>
                 <div class="small-9 columns">
                     <input type="text" id="ImageUrl" name="ImageUrl" placeholder="e.g. " value="@Model.User.ImageUrl">
-                    @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ImageUrl")
+                    @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "ImageUrl")
                 </div>
             </div>
             @if (!string.IsNullOrEmpty(Model.User.ImageUrl))

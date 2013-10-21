@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Asafaharbor.Web.Models;
-using Asafaharbor.Web.Models.Enums;
+using ASafaWeb.Library.DomainModels;
+using ASafaWeb.Library.DomainModels.Enums;
 using Asafaharbor.Web.ViewModels.Projects;
 using Nancy.ModelBinding;
 using Nancy.Security;

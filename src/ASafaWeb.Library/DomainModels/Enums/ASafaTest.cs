@@ -1,4 +1,4 @@
-﻿namespace Asafaharbor.Web.Models.Enums
+﻿namespace ASafaWeb.Library.DomainModels.Enums
 {
     public enum ASafaTest
     {

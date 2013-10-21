@@ -1,4 +1,5 @@
 ﻿@using System.Collections.Generic
+@using ASafaWeb.Library.DomainModels
 @using Asafaharbor.Web.HTMLExtensions
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 <!DOCTYPE html>
@@ -124,7 +125,7 @@
                 </nav>
             <div id="main">
                 <div class="row small-10 columns small-centered">
-                    @Html.NotificationSummary((List<Asafaharbor.Web.Models.NotificationModel>)Model.Page.Notifications)
+                    @Html.NotificationSummary((List<NotificationModel>)Model.Page.Notifications)
                 </div>
                 <div class="small-10 columns small-centered">
                     @RenderBody()

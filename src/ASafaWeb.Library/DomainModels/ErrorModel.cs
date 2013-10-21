@@ -1,4 +1,4 @@
-﻿namespace Asafaharbor.Web.Models
+﻿namespace ASafaWeb.Library.DomainModels
 {
     public class ErrorModel
     {

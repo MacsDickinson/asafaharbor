@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using Raven.Client.Document;
 
-namespace Asafaharbor.Web.Raven
+namespace ASafaWeb.Library.Raven
 {
     public class RavenSessionProvider
     {

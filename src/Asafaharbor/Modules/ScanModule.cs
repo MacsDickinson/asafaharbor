@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ASafaWeb.Library.DomainModels;
+using ASafaWeb.Library.DomainModels.Enums;
 using Asafaharbor.Web.Models;
-using Asafaharbor.Web.Models.Enums;
 using Asafaharbor.Web.ViewModels.Scan;
 using Nancy.Security;
 using Raven.Client;

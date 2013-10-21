@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Asafaharbor.Web.Models.Enums;
+using ASafaWeb.Library.DomainModels.Enums;
 
 namespace Asafaharbor.Web.ViewModels.Projects
 {

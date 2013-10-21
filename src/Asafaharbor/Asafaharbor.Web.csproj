@@ -68,61 +68,21 @@
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\packages\RavenDB.Client.2.0.2380\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Database">
-      <HintPath>..\packages\RavenDB.Database.2.0.2380\lib\net40\Raven.Database.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.DynamicData">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Entity">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.ApplicationServices">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations">
       <Private>True</Private>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Data">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Razor.Unofficial, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Configuration">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Services">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.EnterpriseServices">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\ASafaHarbor-Logo.png" />
@@ -168,20 +128,6 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Handlers\ErrorHandler.cs" />
     <Compile Include="HTMLExtensions\HtmlExtensions.cs" />
-    <Compile Include="Models\Email.cs" />
-    <Compile Include="Models\Enums\ASafaTest.cs" />
-    <Compile Include="Models\Enums\NotificationType.cs" />
-    <Compile Include="Models\ErrorModel.cs" />
-    <Compile Include="Models\LogEvent.cs" />
-    <Compile Include="Models\NotificationModel.cs" />
-    <Compile Include="Models\PageModel.cs" />
-    <Compile Include="Models\Project.cs" />
-    <Compile Include="Models\ProjectSettings.cs" />
-    <Compile Include="Models\Request.cs" />
-    <Compile Include="Models\Scan.cs" />
-    <Compile Include="Models\ScanResults.cs" />
-    <Compile Include="Models\UserAccount.cs" />
-    <Compile Include="Models\UserIdentity.cs" />
     <Compile Include="Modules\AccountModule.cs" />
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\ErrorModule.cs" />
@@ -189,7 +135,6 @@
     <Compile Include="Modules\ProjectsModule.cs" />
     <Compile Include="Modules\ScanModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raven\RavenSessionProvider.cs" />
     <Compile Include="Renderers\ErrorViewRenderer.cs" />
     <Compile Include="Responses\ErrorResponse.cs" />
     <Compile Include="Utils\UserMapper.cs" />
@@ -232,6 +177,10 @@
     <ProjectReference Include="..\asafaweb.api\asafaweb.api.csproj">
       <Project>{C6C7DDBC-AE98-4108-AEBB-BD55B6D72633}</Project>
       <Name>asafaweb.api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASafaWeb.Library\ASafaWeb.Library.csproj">
+      <Project>{B9A66F03-B43B-4449-9E0F-898B8F4BC47B}</Project>
+      <Name>ASafaWeb.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

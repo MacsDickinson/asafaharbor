@@ -1,4 +1,5 @@
 ﻿@using System.Collections.Generic
+@using ASafaWeb.Library.DomainModels
 @using Asafaharbor.Web.HTMLExtensions
 
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
@@ -18,7 +19,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="text" id="Name" name="Name" placeholder="e.g. John Smith" value="@Model.RegisterModel.Name">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Name")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Name")
                     </div>
                 </div>
                 <div class="row">
@@ -27,7 +28,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="text" id="Email" name="Email" placeholder="e.g. John.Smith@sharklasers.com" value="@Model.RegisterModel.Email">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Email")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Email")
                     </div>
                 </div>
                 <div class="row">
@@ -36,7 +37,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="text" id="UserName" name="UserName" placeholder="e.g. johnsmith" value="@Model.RegisterModel.UserName">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "UserName")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "UserName")
                     </div>
                 </div>
                 <div class="row">
@@ -45,7 +46,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="password" id="Password" name="Password">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Password")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Password")
                     </div>
                 </div>
                 <div class="row">
@@ -54,7 +55,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="password" id="ConfirmPassword" name="ConfirmPassword">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "ConfirmPassword")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "ConfirmPassword")
                     </div>
                 </div>
                 <div class="row">
@@ -63,7 +64,7 @@
                     </div>
                     <div class="small-9 columns">
                         <input type="text" id="Website" name="Website" placeholder="e.g. johnsmith.com" value="@Model.RegisterModel.Website">
-                        @Html.ValidationMessageFor((List<Asafaharbor.Web.Models.ErrorModel>)Model.Page.Errors, "Website")
+                        @Html.ValidationMessageFor((List<ErrorModel>)Model.Page.Errors, "Website")
                     </div>
                 </div>
                 <div class="row">

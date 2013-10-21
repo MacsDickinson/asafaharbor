@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Helpers;
-using Asafaharbor.Web.Models;
+using ASafaWeb.Library.DomainModels;
 using Asafaharbor.Web.ViewModels.Account;
 using Nancy;
 using Nancy.Authentication.Forms;

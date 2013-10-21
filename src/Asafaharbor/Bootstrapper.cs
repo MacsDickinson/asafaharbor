@@ -1,5 +1,5 @@
-﻿using Asafaharbor.Web.Models;
-using Asafaharbor.Web.Raven;
+﻿using ASafaWeb.Library.DomainModels;
+using ASafaWeb.Library.Raven;
 using Asafaharbor.Web.Responses;
 using Asafaharbor.Web.Utils;
 using Nancy;

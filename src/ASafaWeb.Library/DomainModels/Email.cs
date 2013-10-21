@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Net.Mail;
 
-namespace Asafaharbor.Web.Models
+namespace ASafaWeb.Library.DomainModels
 {
     public class Email
     {

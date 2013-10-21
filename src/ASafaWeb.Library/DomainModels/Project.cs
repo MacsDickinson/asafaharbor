@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Asafaharbor.Web.Models;
 using asafaweb.api.Enums;
 using asafaweb.api.Logic;
 
-namespace Asafaharbor.Web.Models
+namespace ASafaWeb.Library.DomainModels
 {
     public class Project
     {

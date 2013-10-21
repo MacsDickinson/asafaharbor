@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
-using Asafaharbor.Web.Models;
+using ASafaWeb.Library.DomainModels;
 using Nancy;
 using Nancy.Validation;
 

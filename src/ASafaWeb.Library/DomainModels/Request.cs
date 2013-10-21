@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Asafaharbor.Web.Models
+namespace ASafaWeb.Library.DomainModels
 {
     public class Request
     {

@@ -1,6 +1,6 @@
 ﻿using asafaweb.api.Enums;
 
-namespace Asafaharbor.Web.Models
+namespace ASafaWeb.Library.DomainModels
 {
     public class Scan
     {

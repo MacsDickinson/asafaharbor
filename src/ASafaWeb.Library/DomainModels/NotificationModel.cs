@@ -1,6 +1,6 @@
-﻿using Asafaharbor.Web.Models.Enums;
+﻿using ASafaWeb.Library.DomainModels.Enums;
 
-namespace Asafaharbor.Web.Models
+namespace ASafaWeb.Library.DomainModels
 {
     public class NotificationModel
     {

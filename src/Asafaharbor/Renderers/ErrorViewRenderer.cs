@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using Asafaharbor.Web.Models;
-using Asafaharbor.Web.Models.Enums;
+using ASafaWeb.Library.DomainModels;
+using ASafaWeb.Library.DomainModels.Enums;
 using Asafaharbor.Web.Responses;
 using Asafaharbor.Web.ViewModels;
-using Asafaharbor.Web.ViewModels.Account;
 using Nancy;
 using Nancy.ViewEngines;
 
